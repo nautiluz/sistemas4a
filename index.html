@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #1a73e8;
@@ -30,18 +31,43 @@
         
         h1, h2, h3, h4 { font-family: 'Google Sans', 'Inter', sans-serif; font-weight: 500; letter-spacing: -0.01em; }
         
-        .section-title { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-title { 
+            font-size: 42px; 
+            font-weight: 700; 
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #1a73e8 0%, #34a853 50%, #fbbc04 100%);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(26,115,232,0.1);
+        }
         
         @keyframes iconPulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.15); }
         }
         @keyframes iconFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-6px); }
         }
-        .service-icon { animation: iconFloat 3s ease-in-out infinite; }
-        .service-card:hover .service-icon { animation: iconPulse 0.5s ease-in-out; }
+        
+        .service-card:hover .service-icon { 
+            animation: iconPulse 0.5s ease-in-out; 
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(26,115,232,0.4);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
         
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade { animation: fadeInUp 0.8s ease-out forwards; }
@@ -87,11 +113,26 @@
         
         /* Servicios - Grid estilo Google */
         .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: all 0.2s; cursor: pointer; position: relative; overflow: hidden; }
-        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); transform: scaleY(0); transition: transform 0.2s; }
-        .service-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(26,115,232,0.1); }
+        .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); transform: scaleY(0); transition: transform 0.3s ease; }
+        .service-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(26,115,232,0.15); transform: translateY(-4px); }
         .service-card:hover::before { transform: scaleY(1); }
-        .service-icon { width: 48px; height: 48px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--primary); margin-bottom: 16px; }
+        .service-icon { 
+            width: 56px; height: 56px; 
+            background: var(--primary-light); 
+            border-radius: 14px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 24px; color: var(--primary); 
+            margin-bottom: 16px;
+            animation: iconFloat 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover .service-icon { 
+            animation: iconPulse 0.5s ease-in-out; 
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(26,115,232,0.4);
+        }
         .service-card h3 { font-size: 15px; margin-bottom: 8px; font-weight: 500; }
         .service-card p { color: var(--gray); font-size: 13px; line-height: 1.5; margin-bottom: 16px; }
         .service-btn { width: 100%; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -106,7 +147,7 @@
         .plan-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: all 0.2s; }
         .plan-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-4px); }
         .plan-card.popular { border-color: var(--primary); border-width: 2px; position: relative; }
-        .plan-card.popular::before { content: 'Más популяр'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; font-size: 11px; padding: 4px 12px; border-radius: 4px; font-weight: 500; }
+        .plan-card.popular::before { content: 'Más Popular'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; font-size: 11px; padding: 4px 12px; border-radius: 4px; font-weight: 500; }
         .plan-icon { font-size: 32px; margin-bottom: 12px; }
         .plan-card h3 { font-size: 18px; margin-bottom: 4px; font-weight: 500; }
         .plan-subtitle { font-size: 13px; color: var(--gray); margin-bottom: 16px; }
@@ -328,7 +369,7 @@
                         <li><i class="fas fa-check"></i>✓ Descuento 8% en horas adicionales</li>
                         <li><i class="fas fa-check"></i>✓ Prioridad con tiempo garantizado</li>
                     </ul>
-                    <button class="service-btn" onclick="selectPlan('micro')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-micro')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="plan-card popular">
                     <div class="plan-icon">🏢</div>
@@ -342,7 +383,7 @@
                         <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
                         <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
                     </ul>
-                    <button class="service-btn" onclick="selectPlan('pyme')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-pyme')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="plan-card">
                     <div class="plan-icon">🏭</div>
@@ -356,7 +397,7 @@
                         <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
                         <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
                     </ul>
-                    <button class="service-btn" onclick="selectPlan('premium')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-premium')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="plan-card">
                     <div class="plan-icon">🏙️</div>
@@ -370,7 +411,7 @@
                         <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
                         <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
                     </ul>
-                    <button class="service-btn" onclick="selectPlan('ilimitado')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-ilimitado')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
             </div>
         </div>
@@ -438,56 +479,56 @@
                     <h3>Soporte Técnico</h3>
                     <p>Resolución de incidencias y mantenimiento preventivo. Incluye Outsourcing IT Integral, gestión del puesto de trabajo y protocolos de Continuidad Operativa.</p>
                     <div class="service-features"><span>24/7</span><span>Remoto</span><span>Sitio</span></div>
-                    <button class="service-btn" onclick="selectService('soporte')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('soporte')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-server"></i></div>
                     <h3>Infraestructura Crítica</h3>
-                    <p>Diseño de Data Centers y Networking avanzados con Alta Disponibilidad. Infraestructuras escalables.</p>
+                    <p>Diseño de Data Centers y Networking avanzados con Alta Disponibilidad. Infrastructuras escalables.</p>
                     <div class="service-features"><span>Alta Disponibilidad</span><span>Azure</span><span>VMware</span></div>
-                    <button class="service-btn" onclick="selectService('infra')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('infra')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Ciberseguridad 360°</h3>
                     <p>Blindaje contra Ransomware. Auditorías ISO 27001 y Monitoreo SOC 24/7.</p>
                     <div class="service-features"><span>ISO 27001</span><span>SOC 24/7</span><span>Anti-Ransomware</span></div>
-                    <button class="service-btn" onclick="selectService('cyber')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('cyber')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-brain"></i></div>
                     <h3>Automatización IA</h3>
                     <p>Agentes Inteligentes y RPA. Robots que ejecutan tareas repetitivas y consultoría técnica IA.</p>
                     <div class="service-features"><span>Agentes IA</span><span>RPA</span><span>Consultoría</span></div>
-                    <button class="service-btn" onclick="selectService('ia')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('ia')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-wifi"></i></div>
                     <h3>Redes & Conectividad</h3>
                     <p>Diseño e instalación de redes corporativas, VPN sitio a sitio, WiFi empresarial y conectividad segura.</p>
                     <div class="service-features"><span>UTP</span><span>WiFi</span><span>OpenVPN</span></div>
-                    <button class="service-btn" onclick="selectService('redes')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('redes')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-database"></i></div>
                     <h3>Recuperación de Datos</h3>
                     <p>Recuperar datos borrados, por infección de virus o fallas del sistema operativo.</p>
                     <div class="service-features"><span>Datos</span><span>Infección</span><span>Emergencias</span></div>
-                    <button class="service-btn" onclick="selectService('recup')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('recup')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Desarrollo Web & Sistemas</h3>
                     <p>Páginas web profesionales, sistemas a medida y posicionamiento SEO.</p>
                     <div class="service-features"><span>SEO</span><span>E-commerce</span><span>Sistemas</span></div>
-                    <button class="service-btn" onclick="selectService('desarrollo')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('desarrollo')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-briefcase"></i></div>
                     <h3>Asesoría Estratégica</h3>
                     <p>Consultoría tecnológica para planificar, optimizar costos y seleccionar proveedores.</p>
                     <div class="service-features"><span>Strategy</span><span>Auditoría</span><span>Roadmap</span></div>
-                    <button class="service-btn" onclick="selectService('consultoria')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="CopilotAI.selectService('consultoria')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
             </div>
         </div>
@@ -1830,25 +1871,25 @@
     <a href="https://wa.me/584120317421" class="wa-float" target="_blank">
         <i class="fab fa-whatsapp"></i><span>¿Necesitas ayuda?</span>
     </a>
-    <button class="ai-float" onclick="openAI()"><i class="fas fa-robot"></i></button>
+    <button class="ai-float" id="ai-float"><i class="fas fa-robot"></i></button>
 
     <!-- AI Modal -->
-    <div class="ai-modal" id="aiModal">
+    <div class="ai-modal" id="ai-modal">
         <div class="ai-modal-header">
             <h4><i class="fas fa-robot"></i>Copiloto 4A</h4>
-            <button class="ai-modal-close" onclick="closeAI()"><i class="fas fa-times"></i></button>
+            <button class="ai-modal-close" id="ai-modal-close"><i class="fas fa-times"></i></button>
         </div>
-        <div class="ai-modal-body" id="chatBody"></div>
+        <div class="ai-modal-body" id="ai-modal-body"></div>
         <div class="ai-modal-input">
-            <input type="text" id="chatInput" placeholder="Escribe..." onkeypress="if(event.key==='Enter')sendChat()">
-            <button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="ai-input" placeholder="Escribe...">
+            <button id="ai-send-btn"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
     <script>
         let tasaBCV = 481700;
         let config = { whatsapp: '584120317421' };
-        let telegramToken = '8665094020:AAF2ZmugsJDr0QSxWkw2KiJUxvPwkfdKSFA';
+        let telegramToken = '8729069814:AAHOhfOFL21q0U6xvRlgURg3xF8RF2JYDaU';
         let telegramChatId = '6386477821';
         
         function sendToTelegram(msg) {
@@ -2074,48 +2115,6 @@
             openAI();
         }
         
-        function selectService(svcId) {
-            const svcMap = {
-                'soporte': 'soporte-remoto',
-                'infra': 'infraestructura',
-                'cyber': 'ciberseguridad',
-                'ia': 'automatizacion',
-                'redes': 'redes',
-                'recup': 'recuperacion',
-                'desarrollo': 'desarrollo',
-                'consultoria': 'asesoria'
-            };
-            const sectionId = svcMap[svcId] || svcId;
-            const s = {
-                'soporte-remoto': {title: 'Soporte Remoto', desc: 'Recibe ayuda técnica desde la comodidad de tu hogar u oficina. Usamos Google Remote Desktop para resolver tus problemas rápidamente.', options: ['Tengo un problema puntual', 'Necesito soporte recurrente', 'Quiero un plan mensual']},
-                'infraestructura': {title: 'Infraestructura Crítica', desc: 'Diseño de Data Centers, Networking avanzado y Alta Disponibilidad. Arquitecturas que crecen con tu negocio.', options: ['Diseño de red nueva', 'Mejorar infraestructura existente', 'Data Center completo']},
-                'ciberseguridad': {title: 'Ciberseguridad 360°', desc: 'Blindaje contra ransomware, auditoría ISO 27001 y monitoreo SOC 24/7. Protegemos tu empresa.', options: ['Prevenir ransomware', 'Auditoría de seguridad', 'Monitoreo continuo']},
-                'automatizacion': {title: 'Automatización IA', desc: 'Agentes Inteligentes y RPA. Robots que ejecutan tareas repetitivas para que tu equipo se enfoque en lo importante.', options: ['Automatizar tareas', 'Crear agentes IA', 'RPA para mi negocio']},
-                'redes': {title: 'Redes & Conectividad', desc: 'WiFi Enterprise, VPN Site-to-Site y networking de grado empresarial. Conectamos tu negocio.', options: ['Instalar red nueva', 'Mejorar WiFi', 'VPN segura']},
-                'recuperacion': {title: 'Recuperación de Datos', desc: 'Rescatamos información de discos duros, SSD, USB y tarjetas. También recovered de ransomware.', options: ['Disco dañado', 'Archivo borrado', 'Infección por virus']},
-                'desarrollo': {title: 'Desarrollo Web & IA', desc: 'Webs inteligentes con agentes IA, sistemas ERP y SEO. Tu presencia digital profesional.', options: ['Página web nueva', 'Sistema a medida', 'Mejorar SEO']},
-                'asesoria': {title: 'Asesoría Estratégica', desc: 'Como tener un CTO externo. Planificamos tu tecnología para los próximos 5 años.', options: ['Planificación IT', 'Optimizar costos', 'Seleccionar proveedores']}
-            };
-            const svc = s[sectionId];
-            selectedService = sectionId;
-            userLead.servicio = svc.title;
-            const body = document.getElementById('chatBody');
-            body.innerHTML = `
-                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-robot"></i></div><div class="chat-bubble"><b>¡Hola! Soy Copiloto 4A 🤖</b><br/><span style="color:var(--gray);font-size:12px">Te ayudo a encontrar el servicio ideal para tu empresa.</span></div></div>
-                <div class="chat-msg ai" style="margin-top:8px"><div class="chat-avatar"><i class="fas fa-check-circle" style="color:#34a853"></i></div><div class="chat-bubble"><b>Excelente elección: ${svc.title}</b><br/><span style="color:var(--gray)">${svc.desc}</span></div></div>
-                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-question-circle" style="color:var(--primary)"></i></div><div class="chat-bubble"><b>¿Qué tipo de ${svc.title} necesitas?</b></div></div>
-                <div class="chat-options">
-                    ${svc.options.map((opt) => `<button class="chat-option" onclick="qualifyStep(1)">${opt}</button>`).join('')}
-                </div>
-                <div class="chat-options" style="margin-top:8px">
-                    <button class="chat-option" onclick="goToSection('${sectionId}')">📋 Ver sección completa</button>
-                    <button class="chat-option" onclick="qualifyStep(1)">📞 Quiero cotizar ahora</button>
-                </div>
-            `;
-            document.getElementById(sectionId).scrollIntoView({behavior: 'smooth'});
-            document.getElementById('aiModal').classList.add('active');
-        }
-        
         function renderPlans() {
             const grid = document.getElementById('plansGrid');
             grid.innerHTML = planes.map((p, i) => `
@@ -2126,7 +2125,7 @@
                     <ul class="plan-features">
                         ${p.incluye.map(f => `<li><i class="fas fa-check"></i>${f}</li>`).join('')}
                     </ul>
-                    <button class="service-btn" onclick="selectPlan('${p.id}', '${p.title}')">
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-${p.id}')">
                         <i class="fas fa-info-circle"></i> Ver Detalles
                     </button>
                 </div>
@@ -2153,8 +2152,8 @@
         let selectedService = '';
         let selectedPlan = '';
         
-        function openAI() { document.getElementById('aiModal').classList.add('active'); initChat(); }
-        function closeAI() { document.getElementById('aiModal').classList.remove('active'); }
+        function openAI() { document.getElementById('ai-modal').classList.add('active'); initChat(); }
+        function closeAI() { document.getElementById('ai-modal').classList.remove('active'); }
         
         function initChat() {
             userLead = {}; selectedService = ''; selectedPlan = '';
@@ -2260,36 +2259,218 @@
             };
             const sectionId = svcMap[svcId] || svcId;
             const s = {
-                'soporte-remoto': {title: 'Soporte Remoto', desc: 'Recibe ayuda técnica desde la comodidad de tu hogar u oficina. Usamos Google Remote Desktop para resolver tus problemas rápidamente.', options: ['Tengo un problema puntual', 'Necesito soporte recurrente', 'Quiero un plan mensual']},
-                'infraestructura': {title: 'Infraestructura Crítica', desc: 'Diseño de Data Centers, Networking avanzado y Alta Disponibilidad. Arquitecturas que crecen con tu negocio.', options: ['Diseño de red nueva', 'Mejorar infraestructura existente', 'Data Center completo']},
-                'ciberseguridad': {title: 'Ciberseguridad 360°', desc: 'Blindaje contra ransomware, auditoría ISO 27001 y monitoreo SOC 24/7. Protegemos tu empresa.', options: ['Prevenir ransomware', 'Auditoría de seguridad', 'Monitoreo continuo']},
-                'automatizacion': {title: 'Automatización IA', desc: 'Agentes Inteligentes y RPA. Robots que ejecutan tareas repetitivas para que tu equipo se enfoque en lo importante.', options: ['Automatizar tareas', 'Crear agentes IA', 'RPA para mi negocio']},
-                'redes': {title: 'Redes & Conectividad', desc: 'WiFi Enterprise, VPN Site-to-Site y networking de grado empresarial. Conectamos tu negocio.', options: ['Instalar red nueva', 'Mejorar WiFi', 'VPN segura']},
-                'recuperacion': {title: 'Recuperación de Datos', desc: 'Rescatamos información de discos duros, SSD, USB y tarjetas. También recovered de ransomware.', options: ['Disco dañado', 'Archivo borrado', 'Infección por virus']},
-                'desarrollo': {title: 'Desarrollo Web & IA', desc: 'Webs inteligentes con agentes IA, sistemas ERP y SEO. Tu presencia digital profesional.', options: ['Página web nueva', 'Sistema a medida', 'Mejorar SEO']},
-                'asesoria': {title: 'Asesoría Estratégica', desc: 'Como tener un CTO externo. Planificamos tu tecnología para los próximos 5 años.', options: ['Planificación IT', 'Optimizar costos', 'Seleccionar proveedores']}
+                'soporte-remoto': {
+                    title: 'Soporte Remoto', 
+                    desc: 'Recibe ayuda técnica desde la comodidad de tu hogar u oficina. Usamos Google Remote Desktop para resolver tus problemas rápidamente.',
+                    options: ['Tengo un problema puntual', 'Necesito soporte recurrente', 'Quiero un plan mensual'],
+                    questions: ['¿Cuántos equipos necesitas atender?', '¿Qué sistema operativo usan?', '¿El problema es local o remoto?']
+                },
+                'infraestructura': {
+                    title: 'Infraestructura Crítica', 
+                    desc: 'Diseño de Data Centers, Networking avanzado y Alta Disponibilidad. Arquitecturas que crecen con tu negocio.',
+                    options: ['Diseño de red nueva', 'Mejorar infraestructura existente', 'Data Center completo'],
+                    questions: ['¿Cuántos usuarios tendrás?', '¿Necesitas alta disponibilidad?', '¿Tienes ubicación física?']
+                },
+                'ciberseguridad': {
+                    title: 'Ciberseguridad 360°', 
+                    desc: 'Blindaje contra ransomware, auditoría ISO 27001 y monitoreo SOC 24/7. Protegemos tu empresa.',
+                    options: ['Prevenir ransomware', 'Auditoría de seguridad', 'Monitoreo continuo'],
+                    questions: ['¿Cuántos equipos tienes?', '¿Tienen datos sensibles?', '¿Ya tuvieron algún incidente?']
+                },
+                'automatizacion': {
+                    title: 'Automatización IA', 
+                    desc: 'Agentes Inteligentes y RPA. Robots que ejecutan tareas repetitivas para que tu equipo se enfoque en lo importante.',
+                    options: ['Automatizar tareas', 'Crear agentes IA', 'RPA para mi negocio'],
+                    questions: ['¿Qué tareas son repetitivas?', '¿Cuántas horas semanalmente?', '¿Qué herramientas usan actualmente?']
+                },
+                'redes': {
+                    title: 'Redes & Conectividad', 
+                    desc: 'WiFi Enterprise, VPN Site-to-Site y networking de grado empresarial. Conectamos tu negocio.',
+                    options: ['Instalar red nueva', 'Mejorar WiFi', 'VPN segura'],
+                    questions: ['¿Cuántos puntos de acceso?', '¿Qué tipo de internet tienen?', '¿Necesitan wifi para invitados?']
+                },
+                'recuperacion': {
+                    title: 'Recuperación de Datos', 
+                    desc: 'Rescatamos información de discos duros, SSD, USB y tarjetas. También recovered de ransomware.',
+                    options: ['Disco dañado', 'Archivo borrado', 'Infección por virus'],
+                    questions: ['¿De qué dispositivo es?', '¿Cuántos GB eran los archivos?', '¿Cuándo ocurrió el problema?']
+                },
+                'desarrollo': {
+                    title: 'Desarrollo Web & IA', 
+                    desc: 'Webs inteligentes con agentes IA, sistemas ERP y SEO. Tu presencia digital profesional.',
+                    options: ['Página web nueva', 'Sistema a medida', 'Mejorar SEO'],
+                    questions: ['¿Ya tienes dominio?', '¿Qué funcionalidad necesitas?', '¿Quieres integrar IA?']
+                },
+                'asesoria': {
+                    title: 'Asesoría Estratégica', 
+                    desc: 'Como tener un CTO externo. Planificamos tu tecnología para los próximos 5 años.',
+                    options: ['Planificación IT', 'Optimizar costos', 'Seleccionar proveedores'],
+                    questions: ['¿Cuántos equipos tienen?', '¿Cuál es tu presupuesto IT?', '¿Qué metas tienen a 3 años?']
+                }
             };
             
             const svc = s[sectionId];
+            if(!svc) return;
             selectedService = sectionId;
             userLead.servicio = svc.title;
+            userLead.tipo = '';
             
             const body = document.getElementById('chatBody');
             body.innerHTML = `
-                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-robot"></i></div><div class="chat-bubble"><b>¡Hola! Soy Copiloto 4A 🤖</b><br/><span style="color:var(--gray);font-size:12px">Te ayudo a encontrar el servicio ideal para tu empresa. +11 años de experiencia respaldándonos.</span></div></div>
+                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-robot"></i></div><div class="chat-bubble"><b>¡Hola! Soy Copiloto 4A 🤖</b><br/><span style="color:var(--gray);font-size:12px">+11 años de experiencia respaldándome.</span></div></div>
                 <div class="chat-msg ai" style="margin-top:8px"><div class="chat-avatar"><i class="fas fa-check-circle" style="color:#34a853"></i></div><div class="chat-bubble"><b>Excelente elección: ${svc.title}</b><br/><span style="color:var(--gray)">${svc.desc}</span></div></div>
                 <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-question-circle" style="color:var(--primary)"></i></div><div class="chat-bubble"><b>¿Qué tipo de ${svc.title} necesitas?</b></div></div>
                 <div class="chat-options">
-                    ${svc.options.map((opt, i) => `<button class="chat-option" onclick="qualifyStep(1)">${opt}</button>`).join('')}
-                </div>
-                <div class="chat-options" style="margin-top:8px">
-                    <button class="chat-option" onclick="goToSection('${sectionId}')">📋 Ver sección completa</button>
-                    <button class="chat-option" onclick="qualifyStep(1)">📞 Quiero cotizar ahora</button>
+                    ${svc.options.map((opt, i) => `<button class="chat-option" onclick="selectServiceType('${opt}', '${sectionId}')">${opt}</button>`).join('')}
                 </div>
             `;
             
             document.getElementById(sectionId).scrollIntoView({behavior: 'smooth'});
-            document.getElementById('aiModal').classList.add('active');
+            document.getElementById('ai-modal').classList.add('active');
+        }
+        
+        function selectServiceType(option, sectionId) {
+            userLead.tipo = option;
+            const s = {
+                'soporte-remoto': {title: 'Soporte Remoto', questions: ['¿Cuántos equipos necesitas atender?', '¿Qué sistema operativo usan?', '¿El problema es local o remoto?']},
+                'infraestructura': {title: 'Infraestructura Crítica', questions: ['¿Cuántos usuarios tendrás?', '¿Necesitas alta disponibilidad?', '¿Tienes ubicación física?']},
+                'ciberseguridad': {title: 'Ciberseguridad 360°', questions: ['¿Cuántos equipos tienes?', '¿Tienen datos sensibles?', '¿Ya tuvieron algún incidente?']},
+                'automatizacion': {title: 'Automatización IA', questions: ['¿Qué tareas son repetitivas?', '¿Cuántas horas semanalmente?', '¿Qué herramientas usan actualmente?']},
+                'redes': {title: 'Redes & Conectividad', questions: ['¿Cuántos puntos de acceso?', '¿Qué tipo de internet tienen?', '¿Necesitan wifi para invitados?']},
+                'recuperacion': {title: 'Recuperación de Datos', questions: ['¿De qué dispositivo es?', '¿Cuántos GB eran los archivos?', '¿Cuándo ocurrió el problema?']},
+                'desarrollo': {title: 'Desarrollo Web & IA', questions: ['¿Ya tienes dominio?', '¿Qué funcionalidad necesitas?', '¿Quieres integrar IA?']},
+                'asesoria': {title: 'Asesoría Estratégica', questions: ['¿Cuántos equipos tienen?', '¿Cuál es tu presupuesto IT?', '¿Qué metas tienen a 3 años?']}
+            };
+            
+            const svc = s[sectionId];
+            const body = document.getElementById('chatBody');
+            body.innerHTML += `
+                <div class="chat-msg user"><div class="chat-avatar">👤</div><div class="chat-bubble">${option}</div></div>
+                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-lightbulb" style="color:#fbbc04"></i></div><div class="chat-bubble"><b>Perfecto, ${option}</b><br/><span style="color:var(--gray)">Para darte una mejor cotización, necesito hacerte 3 preguntas rápidas.</span></div></div>
+                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-question" style="color:var(--primary)"></i></div><div class="chat-bubble"><b>Pregunta 1: ${svc.questions[0]}</b></div></div>
+                <div class="chat-input-area">
+                    <input type="text" id="aiResp1" placeholder="Tu respuesta">
+                    <button class="chat-btn" onclick="aiAnswer(2, '${sectionId}')">Sigiente</button>
+                </div>
+            `;
+        }
+        
+        function aiAnswer(step, sectionId) {
+            const resp1 = document.getElementById('aiResp1');
+            if(step === 2) {
+                userLead.resp1 = resp1.value.trim();
+                if(!userLead.resp1) return;
+                
+                const s = {
+                    'soporte-remoto': {questions: ['¿Cuántos equipos necesitas atender?', '¿Qué sistema operativo usan?', '¿El problema es local o remoto?']},
+                    'infraestructura': {questions: ['¿Cuántos usuarios tendrás?', '¿Necesitas alta disponibilidad?', '¿Tienes ubicación física?']},
+                    'ciberseguridad': {questions: ['¿Cuántos equipos tienes?', '¿Tienen datos sensibles?', '¿Ya tuvieron algún incidente?']},
+                    'automatizacion': {questions: ['¿Qué tareas son repetitivas?', '¿Cuántas horas semanalmente?', '¿Qué herramientas usan actualmente?']},
+                    'redes': {questions: ['¿Cuántos puntos de acceso?', '¿Qué tipo de internet tienen?', '¿Necesitan wifi para invitados?']},
+                    'recuperacion': {questions: ['¿De qué dispositivo es?', '¿Cuántos GB eran los archivos?', '¿Cuándo ocurrió el problema?']},
+                    'desarrollo': {questions: ['¿Ya tienes dominio?', '¿Qué funcionalidad necesitas?', '¿Quieres integrar IA?']},
+                    'asesoria': {questions: ['¿Cuántos equipos tienen?', '¿Cuál es tu presupuesto IT?', '¿Qué metas tienen a 3 años?']}
+                };
+                const svc = s[sectionId];
+                const body = document.getElementById('chatBody');
+                body.innerHTML += `
+                    <div class="chat-msg user"><div class="chat-avatar">👤</div><div class="chat-bubble">${userLead.resp1}</div></div>
+                    <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-question" style="color:var(--primary)"></i></div><div class="chat-bubble"><b>Pregunta 2: ${svc.questions[1]}</b></div></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="aiResp2" placeholder="Tu respuesta">
+                        <button class="chat-btn" onclick="aiAnswer(3, '${sectionId}')">Siguiente</button>
+                    </div>
+                `;
+            } else if(step === 3) {
+                userLead.resp2 = document.getElementById('aiResp2').value.trim();
+                if(!userLead.resp2) return;
+                
+                const s = {
+                    'soporte-remoto': {questions: ['¿Cuántos equipos necesitas atender?', '¿Qué sistema operativo usan?', '¿El problema es local o remoto?']},
+                    'infraestructura': {questions: ['¿Cuántos usuarios tendrás?', '¿Necesitas alta disponibilidad?', '¿Tienes ubicación física?']},
+                    'ciberseguridad': {questions: ['¿Cuántos equipos tienes?', '¿Tienen datos sensibles?', '¿Ya tuvieron algún incidente?']},
+                    'automatizacion': {questions: ['¿Qué tareas son repetitivas?', '¿Cuántas horas semanalmente?', '¿Qué herramientas usan actualmente?']},
+                    'redes': {questions: ['¿Cuántos puntos de acceso?', '¿Qué tipo de internet tienen?', '¿Necesitan wifi para invitados?']},
+                    'recuperacion': {questions: ['¿De qué dispositivo es?', '¿Cuántos GB eran los archivos?', '¿Cuándo ocurrió el problema?']},
+                    'desarrollo': {questions: ['¿Ya tienes dominio?', '¿Qué funcionalidad necesitas?', '¿Quieres integrar IA?']},
+                    'asesoria': {questions: ['¿Cuántos equipos tienen?', '¿Cuál es tu presupuesto IT?', '¿Qué metas tienen a 3 años?']}
+                };
+                const svc = s[sectionId];
+                const body = document.getElementById('chatBody');
+                body.innerHTML += `
+                    <div class="chat-msg user"><div class="chat-avatar">👤</div><div class="chat-bubble">${userLead.resp2}</div></div>
+                    <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-question" style="color:var(--primary)"></i></div><div class="chat-bubble"><b>Pregunta 3: ${svc.questions[2]}</b></div></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="aiResp3" placeholder="Tu respuesta">
+                        <button class="chat-btn" onclick="aiAnswer(4, '${sectionId}')">Siguiente</button>
+                    </div>
+                `;
+            } else if(step === 4) {
+                userLead.resp3 = document.getElementById('aiResp3').value.trim();
+                if(!userLead.resp3) return;
+                
+                const body = document.getElementById('chatBody');
+                body.innerHTML += `
+                    <div class="chat-msg user"><div class="chat-avatar">👤</div><div class="chat-bubble">${userLead.resp3}</div></div>
+                    <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-clipboard-check" style="color:#34a853"></i></div><div class="chat-bubble"><b>¡Listo! Tengo toda la información</b><br/><span style="color:var(--gray)">Ahora solo necesito tus datos de contacto para enviarte la cotización.</span></div></div>
+                    <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-user"></i></div><div class="chat-bubble"><b>¿Cuál es tu nombre?</b></div></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="leadNombre" placeholder="Tu nombre completo">
+                        <button class="chat-btn" onclick="finishLead()">Continuar</button>
+                    </div>
+                `;
+            }
+        }
+        
+        function finishLead() {
+            const nombre = document.getElementById('leadNombre').value.trim();
+            if(!nombre) return;
+            userLead.nombre = nombre;
+            userLead.fecha = new Date().toLocaleString('es-VE');
+            
+            const body = document.getElementById('chatBody');
+            body.innerHTML += `
+                <div class="chat-msg user"><div class="chat-avatar">👤</div><div class="chat-bubble">${nombre}</div></div>
+                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-phone"></i></div><div class="chat-bubble"><b>¿Tu número de WhatsApp?</b></div></div>
+                <div class="chat-input-area">
+                    <input type="tel" id="leadWhats" placeholder="+58 412 1234567">
+                    <button class="chat-btn" onclick="saveLead()">Enviar</button>
+                </div>
+            `;
+        }
+        
+        function saveLead() {
+            userLead.whatsapp = document.getElementById('leadWhats').value.trim();
+            userLead.fecha = new Date().toLocaleString('es-VE');
+            
+            const body = document.getElementById('chatBody');
+            body.innerHTML += `
+                <div class="chat-msg user"><div class="chat-avatar">👤</div><div class="chat-bubble">${userLead.whatsapp}</div></div>
+                <div class="chat-msg ai" style="margin-top:12px;background:#e8f5e9;padding:12px;border-radius:8px"><div class="chat-avatar"><i class="fas fa-check-circle" style="color:#34a853"></i></div><div class="chat-bubble"><b>¡Gracias ${userLead.nombre}!</b><br/>He enviado tu solicitud. Te contactaremos en minutos por WhatsApp.</div></div>
+                <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-clock"></i></div><div class="chat-bubble">Horario: Lun-Vie 8am-6pm | Sáb 9am-1pm</div></div>
+            `;
+            
+            sendLeadToTelegram(userLead);
+            sendLeadToWhatsApp(userLead);
+        }
+        
+        function sendLeadToTelegram(lead) {
+            const msg = `*NUEVO LEAD*
+*Servicio:* ${lead.servicio}
+*Tipo:* ${lead.tipo}
+*Nombre:* ${lead.nombre}
+*WhatsApp:* ${lead.whatsapp}
+*Fecha:* ${lead.fecha}
+*Detalles:*
+1. ${lead.resp1}
+2. ${lead.resp2}
+3. ${lead.resp3}`;
+            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
+        }
+        
+        function sendLeadToWhatsApp(lead) {
+            const msg = `Hola, me interesa: ${lead.servicio} (${lead.tipo}). Soy ${lead.nombre}. Mi WhatsApp: ${lead.whatsapp}`;
+            window.open(`https://wa.me/584120317421?text=${encodeURIComponent(msg)}`, '_blank');
         }
         
 function choosePlan(planId) {
@@ -2449,7 +2630,14 @@ function choosePlan(planId) {
         
         setInterval(nextSlide, 4000);
         
-        document.addEventListener('DOMContentLoaded', function() { loadConfig(); fetchTasaBCV(); renderAll(); });
+        document.addEventListener('DOMContentLoaded', function() { loadConfig(); fetchTasaBCV(); renderAll(); CopilotAI.init(); });
+    </script>
+    <script src="js/copilot.js"></script>
+    <script>
+        function openAI() { CopilotAI.open(); }
+        function closeAI() { CopilotAI.close(); }
+        function initChat() { CopilotAI.startConversation(); }
+        function sendChat() { CopilotAI.handleInput(); }
     </script>
 </body>
 </html>
