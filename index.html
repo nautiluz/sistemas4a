@@ -284,21 +284,92 @@
         .chat-btn { width: 100%; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 500; cursor: pointer; }
         
         /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            .plans-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .plans-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero .container > div { grid-template-columns: 1fr 1fr; }
+            .section-header h2 { font-size: 32px; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero h1 { font-size: 32px; }
+            .hero .container > div { grid-template-columns: 1fr !important; text-align: center; }
+            .hero-content { order: 2; }
+            #heroSlider { order: 1; height: 200px !important; margin-bottom: 24px; }
+            .hero h1 { font-size: 28px; }
+            .hero p { font-size: 14px; }
+            .hero-btns { flex-direction: column; gap: 12px; }
+            .hero-btns .btn { width: 100%; justify-content: center; }
             .services-grid, .plans-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .social { justify-content: center; }
-            .footer-bottom { flex-direction: column; gap: 12px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
             .wa-float span { display: none; }
             .wa-float { width: 48px; height: 48px; border-radius: 50%; padding: 0; justify-content: center; }
-            .ai-modal { width: calc(100% - 32px); left: 16px; right: 16px; }
+            .ai-modal { width: calc(100% - 32px) !important; left: 16px !important; right: 16px !important; }
             .contact-grid { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 26px; }
+            .section-header p { font-size: 14px; }
+            .section { padding: 48px 0; }
+            .testimonios-grid, .servicios-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex !important; }
+            .plan-card { padding: 16px; }
+            .plan-price { font-size: 24px !important; }
+            .plan-features { font-size: 12px; }
+            .plan-features li { padding: 4px 0; }
+            .floating { animation: none; }
+            .slide { padding: 20px !important; }
+            .slide h3 { font-size: 18px !important; }
+            .slide p { font-size: 12px !important; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 24px; }
+            .section-header h2 { font-size: 22px; }
+            .plan-card { padding: 12px; }
+            .plan-card h3 { font-size: 16px; }
+            .plan-price { font-size: 20px !important; }
+            .plan-features { font-size: 11px; }
+            .service-btn { padding: 10px 16px; font-size: 12px; }
+            .floating { padding: 16px !important; }
+            .floating h3 { font-size: 14px !important; }
+            .floating p { font-size: 12px !important; }
+            .footer-col h4 { font-size: 16px; }
+            .footer-col ul li { font-size: 12px; }
+            #heroSlider { height: 180px !important; }
+            .slide { padding: 16px !important; }
+            .slide h3 { font-size: 16px !important; }
+        }
+        @media (min-width: 769px) {
+            .nav-links { display: flex !important; }
+            #nav-links.active { display: flex !important; }
+        }
+        @media (max-width: 768px) {
+            #nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: white; 
+                flex-direction: column; 
+                padding: 16px; 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            #nav-links.active { display: flex !important; }
+            #nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
+            .nav-dropdown-content { 
+                position: static !important; 
+                box-shadow: none !important; 
+                border: none !important; 
+                padding-left: 16px !important;
+            }
+            .mobile-menu-btn { display: flex !important; }
         }
     </style>
 </head>
@@ -434,7 +505,7 @@
                 <div class="logo-icon"><i class="fas fa-layer-group"></i></div>
                 Sistemas 4A
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <a href="#somos">Quiénes Somos</a>
                 <div class="nav-dropdown">
                     <a href="#servicios">Servicios ▾</a>
@@ -453,6 +524,9 @@
                 <a href="#planes">Planes</a>
                 <a href="#contacto" onclick="CopilotAI.open();return false">Contacto</a>
             </div>
+            <button class="mobile-menu-btn" onclick="document.getElementById('nav-links').classList.toggle('active')" style="display:none;background:none;border:none;cursor:pointer;padding:8px">
+                <i class="fas fa-bars" style="font-size:24px;color:var(--primary)"></i>
+            </button>
             <a href="#" onclick="CopilotAI.open();return false" class="nav-cta">Cotizar</a>
         </nav>
     </header>
