@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+# Sitemap
+Sitemap: https://sistemas4a.com.ve/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

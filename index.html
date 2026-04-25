@@ -3,8 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistemas 4A | Consultoría IT & Soporte Técnico</title>
-    <meta name="description" content="Consultoría IT empresarial. Soporte técnico 24/7, infraestructura crítica, ciberseguridad y automatización IA.">
+    <title>Sistemas 4A | Consultoría IT & Soporte Técnico 24/7 Venezuela</title>
+    <meta name="description" content="Sistemas 4A - Consultoría IT empresarial líder en Venezuela. Soporte técnico 24/7, infraestructura crítica, ciberseguridad ISO 27001, automatización IA. +11 años experiencia. ¡Cotiza ahora!">
+    <meta name="keywords" content="soporte técnico Venezuela, consultoría IT Caracas, ciberseguridad 360, infraestructura crítica, redes y conectividad, recuperación de datos, automatización IA, desarrollo web, outsourcing IT, servicio técnico 24/7, mantenimiento de computadoras, servidor, cloud, Azure,VMware, SentinelOne">
+    <meta name="author" content="Sistemas 4A - Ing. Angel Rodriguez">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="1 day">
+    <meta name="theme-color" content="#1a73e8">
+    <link rel="canonical" href="https://sistemas4a.com.ve/">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a73e8' width='100' height='100' rx='20'/><text y='.9em' font-size='70' x='50%' text-anchor='middle' fill='white'>4A</text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sistemas4a.com.ve/">
+    <meta property="og:title" content="Sistemas 4A | Consultoría IT & Soporte Técnico 24/7 Venezuela">
+    <meta property="og:description" content="Consultoría IT empresarial líder. Soporte técnico 24/7, infraestructura crítica, ciberseguridad y automatización IA. +11 años de experiencia. ¡Cotiza ahora!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=630&fit=crop">
+    <meta property="og:site_name" content="Sistemas 4A">
+    <meta property="og:locale" content="es_VE">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sistemas4a.com.ve/">
+    <meta name="twitter:title" content="Sistemas 4A | Consultoría IT & Soporte Técnico 24/7 Venezuela">
+    <meta name="twitter:description" content="Consultoría IT empresarial líder. Soporte técnico 24/7, ciberseguridad, infraestructura crítica. +11 años experiencia.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=630&fit=crop">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a73e8' width='100' height='100' rx='20'/><text y='.9em' font-size='70' x='50%' text-anchor='middle' fill='white'>4A</text></svg>">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,6 +54,7 @@
             --border: #dadce0;
         }
         
+        /* Performance Optimizations */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--dark); line-height: 1.5; font-size: 14px; -webkit-font-smoothing: antialiased; }
@@ -50,7 +80,30 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-6px); }
         }
-        
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse2 {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(26,115,232,0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(26,115,232,0); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(26,115,232,0.3); }
+            50% { box-shadow: 0 0 20px rgba(26,115,232,0.6); }
+        }
+        .floating { animation: floatY 3s ease-in-out infinite; }
+        .floating-delay { animation: floatY 3s ease-in-out infinite; animation-delay: 1s; }
+        .pulse-btn { animation: pulse2 2s infinite; }
+        .blink-cursor { animation: blink 1s infinite; }
         .service-card:hover .service-icon { 
             animation: iconPulse 0.5s ease-in-out; 
             background: var(--primary);
@@ -75,6 +128,8 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         
         /* Header - Estilo Google */
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: white; padding: 8px 16px; z-index: 1000; transition: top 0.3s; }
+        .skip-link:focus { top: 0; }
         header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.95); }
         nav { height: 64px; display: flex; align-items: center; justify-content: space-between; }
         .logo { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--primary); display: flex; align-items: center; gap: 10px; letter-spacing: -0.02em; }
@@ -247,9 +302,133 @@
         }
     </style>
 </head>
+    
+    <!-- Schema.org JSON-LD - Local Business SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService", "ITService"],
+        "name": "Sistemas 4A",
+        "description": "Consultoría IT empresarial y soporte técnico 24/7 en Venezuela. Infraestructura crítica, ciberseguridad ISO 27001, automatización IA.",
+        "url": "https://sistemas4a.com.ve",
+        "telephone": "+584120317421",
+        "email": "nautiluz90@gmail.com",
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 08:00-18:00, Sa 09:00-13:00",
+        "openingHoursSpecification": [
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "18:00"},
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "VE",
+            "addressRegion": "Distrito Capital",
+            "addressLocality": "Caracas"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "10.4806",
+            "longitude": "-66.9036"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Venezuela"
+        },
+        "serviceType": ["Soporte técnico", "Consultoría IT", "Infraestructura de redes", "Ciberseguridad", "Automatización IA"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Planes de Soporte",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Plan Micro", "description": "Hasta 5 computadoras - 4 hrs/mes soporte en sitio"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Plan PYME", "description": "Hasta 10 computadoras - 8 hrs/mes soporte en sitio"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Plan Premium", "description": "Hasta 20 computadoras - 16 hrs/mes soporte en sitio"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Plan Ilimitado", "description": "Hasta 30 computadoras - soporte ilimitado"}}
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "47",
+            "bestRating": "5"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "María C."},
+                "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+                "reviewBody": "Excelente servicio técnico. Resolvieron nuestro problema de red en tiempo record."
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Carlos M."},
+                "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+                "reviewBody": "Profesionalismo total. Nuestro servidor estaba caído y en 2 horas todo funcionando."
+            }
+        ],
+        "sameAs": [
+            "https://www.facebook.com/sistemas4a",
+            "https://www.instagram.com/sistemas4a",
+            "https://www.linkedin.com/company/sistemas4a"
+        ],
+        "knowsAbout": ["Soporte técnico", "Infraestructura crítica", "Ciberseguridad", "Redes", "Automatización", "IA", "Recuperación de datos", "Desarrollo web"]
+    }
+    </script>
+    
+    <!-- FAQ Schema for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Qué servicios de soporte técnico ofrecen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ofrecemos soporte técnico 24/7, soporte remoto, soporte en sitio, infraestructura crítica, ciberseguridad 360°, automatización IA, redes y conectividad, recuperación de datos, desarrollo web y consultoría estratégica IT."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿En qué zona de Venezuela dan servicio?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Damos servicio en todo el territorio nacional Venezuela, especialmente en Caracas y região capital. Soporte remoto disponible para todo el país."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuál es el tiempo de respuesta?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tiempo de respuesta garantizado: crítico en 30 min, estándar en 2 hrs. Con Nuestros planes Premium e Ilimitado tienes prioridad absolute."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Tienen servicio de emergencia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, servicio de emergencia 24/7 disponible para clientes de todos los planes. Llama al +58 412 0317421."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué incluye el plan PYME?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El plan PYME incluye: soporte en sitio 8 hrs/mes, remoto ilimitado, backup local y cloud, consulta ilimitada a técnico experto, y tiempo de respuesta garantizado. Precio: $89/mes."
+                }
+            }
+        ]
+    }
+    </script>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
     <!-- Header -->
-    <header>
+    <header role="banner">
         <nav class="container">
             <a href="#" class="logo">
                 <div class="logo-icon"><i class="fas fa-layer-group"></i></div>
@@ -260,8 +439,8 @@
                 <div class="nav-dropdown">
                     <a href="#servicios">Servicios ▾</a>
                     <div class="nav-dropdown-content">
-                        <a href="#soporte-remoto">🎧 Soporte Remoto</a>
                         <a href="#soporte-tecnico">🔧 Soporte Técnico Integral</a>
+                        <a href="#soporte-remoto">🎧 Soporte Remoto</a>
                         <a href="#infraestructura">🖥️ Infraestructura Crítica</a>
                         <a href="#ciberseguridad">🔒 Ciberseguridad 360°</a>
                         <a href="#automatizacion">🤖 Automatización IA</a>
@@ -272,14 +451,15 @@
                     </div>
                 </div>
                 <a href="#planes">Planes</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#contacto" onclick="CopilotAI.open();return false">Contacto</a>
             </div>
-            <a href="#contacto" class="nav-cta">Cotizar</a>
+            <a href="#" onclick="CopilotAI.open();return false" class="nav-cta">Cotizar</a>
         </nav>
     </header>
 
     <!-- Hero con Banner Rotatorio -->
-    <section class="hero">
+    <main id="main-content">
+    <section class="hero" role="region" aria-label="Hero principal">
         <div class="container">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
                 <div class="hero-content">
@@ -287,7 +467,7 @@
                     <p>Consultoría IT empresarial. Soporte técnico 24/7, infraestructura crítica, ciberseguridad y automatización IA para hacer crecer tu negocio.</p>
                     <div class="hero-btns">
                         <a href="#servicios" class="btn btn-white"><i class="fas fa-rocket"></i>Ver Servicios</a>
-                        <a href="#contacto" class="btn btn-outline"><i class="fas fa-phone"></i>Contactar</a>
+                        <a href="#" onclick="CopilotAI.open();return false" class="btn btn-outline"><i class="fas fa-phone"></i>Contactar</a>
                     </div>
                 </div>
                 <div>
@@ -361,6 +541,7 @@
                     <div class="plan-icon">🖥️</div>
                     <h3>Micro</h3>
                     <p class="plan-subtitle">Hasta 5 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$49<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: 4 horas/mes</li>
                         <li><i class="fas fa-check"></i>✓ Soporte Remoto vía Internet ilimitado</li>
@@ -369,12 +550,13 @@
                         <li><i class="fas fa-check"></i>✓ Descuento 8% en horas adicionales</li>
                         <li><i class="fas fa-check"></i>✓ Prioridad con tiempo garantizado</li>
                     </ul>
-                    <button class="service-btn" onclick="CopilotAI.selectService('plan-micro')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="showPlanDetails('plan-micro')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="plan-card popular">
                     <div class="plan-icon">🏢</div>
                     <h3>PYME</h3>
                     <p class="plan-subtitle">Hasta 10 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$89<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: 8 horas/mes</li>
                         <li><i class="fas fa-check"></i>✓ Soporte Remoto telefónico ilimitado</li>
@@ -383,12 +565,13 @@
                         <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
                         <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
                     </ul>
-                    <button class="service-btn" onclick="CopilotAI.selectService('plan-pyme')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="showPlanDetails('plan-pyme')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="plan-card">
                     <div class="plan-icon">🏭</div>
                     <h3>Premium</h3>
                     <p class="plan-subtitle">Hasta 20 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$149<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: 16 horas/mes</li>
                         <li><i class="fas fa-check"></i>✓ Soporte Remoto telefónico ilimitado</li>
@@ -397,21 +580,57 @@
                         <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
                         <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
                     </ul>
-                    <button class="service-btn" onclick="CopilotAI.selectService('plan-premium')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="showPlanDetails('plan-premium')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="plan-card">
-                    <div class="plan-icon">🏙️</div>
+                    <div class="plan-icon">🚀</div>
                     <h3>Ilimitado</h3>
-                    <p class="plan-subtitle">Hasta 30 computadoras</p>
+                    <p class="plan-subtitle">Más de 20 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$249<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
                     <ul class="plan-features">
-                        <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: Horas ilimitadas</li>
+                        <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: Ilimitado</li>
                         <li><i class="fas fa-check"></i>✓ Soporte Remoto telefónico ilimitado</li>
                         <li><i class="fas fa-check"></i>✓ Soporte Remoto vía Internet ilimitado</li>
                         <li><i class="fas fa-check"></i>✓ Respaldo de Datos local y en nube</li>
-                        <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
-                        <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
+                        <li><i class="fas fa-check"></i>✓ Gestor de Cuenta Dedicated</li>
+                        <li><i class="fas fa-check"></i>✓ SLA con garantías scritpas</li>
                     </ul>
-                    <button class="service-btn" onclick="CopilotAI.selectService('plan-ilimitado')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                    <button class="service-btn" onclick="showPlanDetails('plan-ilimitado')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+            </div>
+            
+            <!-- Plan Details Inline - Below Planes -->
+<div id="plan-details-container" style="display:none;margin-top:24px">
+                <!-- Content injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="section" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que dicen nuestros clientes</h2>
+                <p>Empresas que confían en Sistemas 4A</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+                <div class="floating" style="background:white;padding:24px;border-radius:12px;border:1px solid var(--border);text-align:center;animation-delay:0s">
+                    <div style="font-size:40px;margin-bottom:16px">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:16px;font-style:italic">"Excelente servicio técnico. Resolvieron nuestro problema de red en tiempo record."</p>
+                    <div style="font-weight:600;font-size:14px">María C.</div>
+                    <div style="font-size:12px;color:var(--gray)">Gerenta, Farmacia San José</div>
+                </div>
+                <div class="floating" style="background:white;padding:24px;border-radius:12px;border:1px solid var(--border);text-align:center;animation-delay:0.5s">
+                    <div style="font-size:40px;margin-bottom:16px">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:16px;font-style:italic">"Profesionalismo total. Nuestro servidor estaba caído y en 2 horas todo funcionando."</p>
+                    <div style="font-weight:600;font-size:14px">Carlos M.</div>
+                    <div style="font-size:12px;color:var(--gray)">Director, Consultorio Legal</div>
+                </div>
+                <div class="floating" style="background:white;padding:24px;border-radius:12px;border:1px solid var(--border);text-align:center;animation-delay:1s">
+                    <div style="font-size:40px;margin-bottom:16px">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:16px;font-style:italic">"El plan PYME ha sido la mejor inversión. Soporte 24/7 y siempre responden rápido."</p>
+                    <div style="font-weight:600;font-size:14px">Ana R.</div>
+                    <div style="font-size:12px;color:var(--gray)">CEO, Agencia Marketing</div>
                 </div>
             </div>
         </div>
@@ -425,20 +644,20 @@
                 <div style="width:80px;height:4px;background:#fbbc04;border-radius:2px;margin:0 auto 32px"></div>
                 
                 <div style="display:flex;justify-content:center;gap:48px;margin-bottom:40px;flex-wrap:wrap">
-                    <div style="text-align:center">
+                    <a href="#somos" class="floating" style="text-align:center;cursor:pointer">
                         <div style="font-size:48px;font-weight:700;line-height:1">11+</div>
-                        <div style="font-size:13px;opacity:0.8">Años experiência</div>
-                    </div>
+                        <div style="font-size:13px;opacity:0.8">Años experiencia</div>
+                    </a>
                     <div style="width:1px;background:rgba(255,255,255,0.3)"></div>
-                    <div style="text-align:center">
+                    <a href="#somos" class="floating" style="text-align:center;animation-delay:0.5s;cursor:pointer">
                         <div style="font-size:48px;font-weight:700;line-height:1">100%</div>
-                        <div style="font-size:13px;opacity:0.8">Operatividade</div>
-                    </div>
+                        <div style="font-size:13px;opacity:0.8">Operatividad</div>
+                    </a>
                     <div style="width:1px;background:rgba(255,255,255,0.3)"></div>
-                    <div style="text-align:center">
+                    <a href="#soporte-remoto" class="floating" style="text-align:center;animation-delay:1s;cursor:pointer">
                         <div style="font-size:48px;font-weight:700;line-height:1">24/7</div>
                         <div style="font-size:13px;opacity:0.8">Soporte</div>
-                    </div>
+                    </a>
                 </div>
                 
                 <p style="font-size:18px;opacity:0.95;line-height:1.8;margin-bottom:24px">
@@ -447,11 +666,11 @@
                 </p>
                 
                 <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:28px">
-                    <span style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px"><i class="fas fa-server" style="margin-right:8px"></i>Infraestructura</span>
-                    <span style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px"><i class="fas fa-network-wired" style="margin-right:8px"></i>Redes</span>
-                    <span style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px"><i class="fas fa-headset" style="margin-right:8px"></i>Soporte</span>
-                    <span style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px"><i class="fas fa-shield-alt" style="margin-right:8px"></i>Seguridad</span>
-                    <span style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px"><i class="fas fa-lightbulb" style="margin-right:8px"></i>Asesoría</span>
+                    <a href="#infraestructura" style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px;cursor:pointer"><i class="fas fa-server" style="margin-right:8px"></i>Infraestructura</a>
+                    <a href="#redes" style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px;cursor:pointer"><i class="fas fa-network-wired" style="margin-right:8px"></i>Redes</a>
+                    <a href="#soporte-remoto" style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px;cursor:pointer"><i class="fas fa-headset" style="margin-right:8px"></i>Soporte</a>
+                    <a href="#ciberseguridad" style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px;cursor:pointer"><i class="fas fa-shield-alt" style="margin-right:8px"></i>Seguridad</a>
+                    <a href="#asesoria" style="background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:24px;font-size:13px;cursor:pointer"><i class="fas fa-lightbulb" style="margin-right:8px"></i>Asesoría</a>
                 </div>
                 
                 <p style="font-size:16px;opacity:0.9;line-height:1.7;max-width:600px;margin:0 auto 24px">
@@ -459,9 +678,9 @@
                     Alta calidad, tiempos rápidos y operatividad garantizada.
                 </p>
                 
-                <div style="display:inline-flex;align-items:center;gap:10px;background:#fbbc04;color:#202124;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px">
+                <a href="#planes" style="display:inline-flex;align-items:center;gap:10px;background:#fbbc04;color:#202124;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;cursor:pointer">
                     <i class="fas fa-rocket"></i> Optimización operativa + Desarrollo de talento
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -475,42 +694,42 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <div class="service-icon floating" style="animation-delay:0s"><i class="fas fa-headset"></i></div>
                     <h3>Soporte Técnico</h3>
                     <p>Resolución de incidencias y mantenimiento preventivo. Incluye Outsourcing IT Integral, gestión del puesto de trabajo y protocolos de Continuidad Operativa.</p>
                     <div class="service-features"><span>24/7</span><span>Remoto</span><span>Sitio</span></div>
                     <button class="service-btn" onclick="CopilotAI.selectService('soporte')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-server"></i></div>
+                    <div class="service-icon floating" style="animation-delay:0.3s"><i class="fas fa-server"></i></div>
                     <h3>Infraestructura Crítica</h3>
                     <p>Diseño de Data Centers y Networking avanzados con Alta Disponibilidad. Infrastructuras escalables.</p>
                     <div class="service-features"><span>Alta Disponibilidad</span><span>Azure</span><span>VMware</span></div>
                     <button class="service-btn" onclick="CopilotAI.selectService('infra')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="service-icon floating" style="animation-delay:0.6s"><i class="fas fa-shield-alt"></i></div>
                     <h3>Ciberseguridad 360°</h3>
                     <p>Blindaje contra Ransomware. Auditorías ISO 27001 y Monitoreo SOC 24/7.</p>
                     <div class="service-features"><span>ISO 27001</span><span>SOC 24/7</span><span>Anti-Ransomware</span></div>
                     <button class="service-btn" onclick="CopilotAI.selectService('cyber')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-brain"></i></div>
+                    <div class="service-icon floating" style="animation-delay:0.9s"><i class="fas fa-brain"></i></div>
                     <h3>Automatización IA</h3>
                     <p>Agentes Inteligentes y RPA. Robots que ejecutan tareas repetitivas y consultoría técnica IA.</p>
                     <div class="service-features"><span>Agentes IA</span><span>RPA</span><span>Consultoría</span></div>
                     <button class="service-btn" onclick="CopilotAI.selectService('ia')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-wifi"></i></div>
+                    <div class="service-icon floating" style="animation-delay:1.2s"><i class="fas fa-wifi"></i></div>
                     <h3>Redes & Conectividad</h3>
                     <p>Diseño e instalación de redes corporativas, VPN sitio a sitio, WiFi empresarial y conectividad segura.</p>
                     <div class="service-features"><span>UTP</span><span>WiFi</span><span>OpenVPN</span></div>
                     <button class="service-btn" onclick="CopilotAI.selectService('redes')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-database"></i></div>
+                    <div class="service-icon floating" style="animation-delay:1.5s"><i class="fas fa-database"></i></div>
                     <h3>Recuperación de Datos</h3>
                     <p>Recuperar datos borrados, por infección de virus o fallas del sistema operativo.</p>
                     <div class="service-features"><span>Datos</span><span>Infección</span><span>Emergencias</span></div>
@@ -530,154 +749,52 @@
                     <div class="service-features"><span>Strategy</span><span>Auditoría</span><span>Roadmap</span></div>
                     <button class="service-btn" onclick="CopilotAI.selectService('consultoria')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Soporte Remoto -->
-    <section class="section" id="soporte-remoto">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Soporte Remoto</h2>
-                <p>Recibe ayuda técnica desde la comodidad de tu hogar u oficina</p>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
-                <div>
-                    <h3 style="font-size:18px;margin-bottom:16px">¿Cómo funciona el soporte remoto?</h3>
-                    <div style="display:flex;flex-direction:column;gap:14px">
-                        <div style="display:flex;gap:14px;align-items:flex-start">
-                            <div style="width:36px;height:36px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0">
-                                <i class="fab fa-whatsapp" style="font-size:16px"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight:500;margin-bottom:3px">1. Contáctanos por WhatsApp</div>
-                                <div style="font-size:12px;color:var(--gray)">Escríbenos al +58 412 0317421</div>
-                            </div>
-                        </div>
-                        <div style="display:flex;gap:14px;align-items:flex-start">
-                            <div style="width:36px;height:36px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0">
-                                <i class="fas fa-desktop" style="font-size:16px"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight:500;margin-bottom:3px">2. Conectamos remotamente</div>
-                                <div style="font-size:12px;color:var(--gray)">Usamos Google Remote Desktop</div>
-                            </div>
-                        </div>
-                        <div style="display:flex;gap:14px;align-items:flex-start">
-                            <div style="width:36px;height:36px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0">
-                                <i class="fas fa-check-circle" style="font-size:16px"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight:500;margin-bottom:3px">3. Resolvemos tu problema</div>
-                                <div style="font-size:12px;color:var(--gray)">Diagnóstico y solución en tiempo real</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:16px;padding:14px;background:var(--light);border-radius:8px;font-size:13px">
-                        <div style="font-weight:500;margin-bottom:8px;color:var(--primary)"><i class="fas fa-info-circle"></i> Requisitos:</div>
-                        <ul style="color:var(--gray);list-style:none;line-height:1.8">
-                            <li>• Conexión a Internet estable</li>
-                            <li>• Google Chrome (gratuito)</li>
-                            <li>• Permisos de acceso remoto</li>
-                        </ul>
-                    </div>
-                </div>
-                <div style="text-align:center">
-                    <div style="width:160px;height:160px;background:linear-gradient(135deg,var(--primary),#0d47a1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
-                        <i class="fas fa-headset" style="font-size:64px;color:white"></i>
-                    </div>
-                    <a href="https://wa.me/584120317421" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:14px 28px;border-radius:4px;font-weight:500;font-size:14px">
-                        <i class="fab fa-whatsapp"></i> Solicitar Soporte
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Cómo usar Google Remote Desktop -->
-            <div style="margin-top:40px;padding:24px;background:white;border-radius:12px;border:1px solid var(--border)">
-                <h3 style="font-size:18px;margin-bottom:20px;text-align:center">📺 Cómo usar Google Remote Desktop</h3>
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-                    <div style="text-align:center;padding:16px">
-                        <div style="width:60px;height:60px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
-                            <span style="font-size:24px;font-weight:bold;color:var(--primary)">1</span>
-                        </div>
-                        <h4 style="font-size:14px;margin-bottom:8px">Descarga</h4>
-                        <p style="font-size:12px;color:var(--gray)">Descarga la extensión <a href="https://remotedesktop.google.com/support" target="_blank" style="color:var(--primary)">Remote Desktop</a> en Chrome Web Store</p>
-                    </div>
-                    <div style="text-align:center;padding:16px">
-                        <div style="width:60px;height:60px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
-                            <span style="font-size:24px;font-weight:bold;color:var(--primary)">2</span>
-                        </div>
-                        <h4 style="font-size:14px;margin-bottom:8px">Instala</h4>
-                        <p style="font-size:12px;color:var(--gray)">Haz clic en "Añadir a Chrome" y luego en "Añadir extensión"</p>
-                    </div>
-                    <div style="text-align:center;padding:16px">
-                        <div style="width:60px;height:60px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
-                            <span style="font-size:24px;font-weight:bold;color:var(--primary)">3</span>
-                        </div>
-                        <h4 style="font-size:14px;margin-bottom:8px">Conecta</h4>
-                        <p style="font-size:12px;color:var(--gray)">Nuestro técnico te enviará un código para compartir tu pantalla</p>
-                    </div>
-                </div>
-                <div style="text-align:center;margin-top:16px">
-                    <a href="https://remotedesktop.google.com/support" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:12px 24px;border-radius:4px;font-weight:500;font-size:13px">
-                        <i class="fas fa-external-link-alt"></i> Ver tutorial oficial
-                    </a>
-                </div>
-            </div>
+</div>
         </div>
     </section>
 
     <!-- Soporte Técnico Integral -->
     <section id="soporte-tecnico" class="section" style="background: var(--light);">
         <div class="container">
-            <!-- Hero Section -->
             <div style="text-align:center;margin-bottom:48px">
                 <span style="font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;display:block">Servicios Profesionales</span>
                 <h2 class="section-title">Soporte Técnico Integral</h2>
-                <p style="font-size:16px;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7">
-                    Garantizamos la estabilidad de su infraestructura con protocolos de nivel ejecutivo. Desde la resolución de incidencias diarias hasta la gestión completa de su ecosistema digital.
-                </p>
+                <p style="font-size:16px;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7">Garantizamos la estabilidad de su infraestructura con protocolos de nivel ejecutivo.</p>
             </div>
-            
-            <!-- Detailed Services Grid - 4 columnas -->
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:48px">
                 <div class="service-card" style="padding:28px;border-radius:16px;background:white">
                     <div style="width:56px;height:56px;background:#e8f0fe;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                         <i class="fas fa-ticket-alt" style="font-size:22px;color:var(--primary)"></i>
                     </div>
                     <h3 style="font-size:16px;margin-bottom:8px">Resolución de Incidencias</h3>
-                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Respuesta inmediata a fallos críticos y técnicos de hardware o software mediante acceso remoto seguro.</p>
+                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Respuesta inmediata a fallos críticos y técnicos.</p>
                 </div>
                 <div class="service-card" style="padding:28px;border-radius:16px;background:white">
                     <div style="width:56px;height:56px;background:#e6f4ea;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                         <i class="fas fa-shield-virus" style="font-size:22px;color:#34a853"></i>
                     </div>
                     <h3 style="font-size:16px;margin-bottom:8px">Mantenimiento Preventivo</h3>
-                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Auditorías programadas y optimización de sistemas para evitar tiempos de inactividad costosos.</p>
+                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Auditorías programadas y optimización de sistemas.</p>
                 </div>
                 <div class="service-card" style="padding:28px;border-radius:16px;background:white">
                     <div style="width:56px;height:56px;background:#fef7e0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                         <i class="fas fa-handshake" style="font-size:22px;color:#fbbc04"></i>
                     </div>
                     <h3 style="font-size:16px;margin-bottom:8px">Outsourcing IT Integral</h3>
-                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Nos convertimos en su departamento de sistemas, gestionando proveedores, licencias y soporte de usuario final.</p>
+                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Gestionamos proveedores, licencias y soporte.</p>
                 </div>
                 <div class="service-card" style="padding:28px;border-radius:16px;background:white">
                     <div style="width:56px;height:56px;background:#fce8e6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                         <i class="fas fa-sync-alt" style="font-size:22px;color:#ea4335"></i>
                     </div>
                     <h3 style="font-size:16px;margin-bottom:8px">Continuidad Operativa</h3>
-                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Protocolos de recuperación y respaldo para que su negocio nunca se detenga ante una falla técnica.</p>
-                </div>
+                    <p style="font-size:13px;color:var(--gray);line-height:1.6">Protocolos de recuperación y respaldo.</p>
+</div>
             </div>
             
             <!-- Gestión del Puesto de Trabajo -->
-            <div style="background:white;border-radius:32px;padding:40px;display:flex;gap:40px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+            <div style="background:white;border-radius:32px;padding:40px;display:flex;gap:40px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-top:40px">
                 <div style="flex:1">
-                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-                        <i class="fas fa-laptop-house" style="color:var(--primary)"></i>
-                        <span style="font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1px">Gestión Moderna</span>
-                    </div>
                     <h3 style="font-size:26px;margin-bottom:16px">Gestión del Puesto de Trabajo</h3>
                     <p style="font-size:14px;color:var(--gray);margin-bottom:16px;line-height:1.7">
                         Estandarizamos el entorno de trabajo de sus colaboradores, ya sea en la oficina o remoto, asegurando que cada equipo tenga las herramientas necesarias configuradas bajo políticas de seguridad corporativas.
@@ -706,13 +823,41 @@
             <!-- CTA -->
             <div style="text-align:center;margin-top:48px;padding-top:40px;border-top:1px solid var(--border)">
                 <h3 style="font-size:24px;margin-bottom:16px">¿Listo para estabilizar su empresa?</h3>
-                <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421" style="display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
-                        <i class="fab fa-whatsapp"></i> Solicitar Soporte Ahora
-                    </a>
-                    <a href="#planes" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
-                        Ver Planes Mensuales
-                    </a>
+                <button onclick="CopilotAI.selectService('soporte')" style="display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
+                    <i class="fab fa-whatsapp"></i> Solicitar Soporte Ahora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soporte Remoto -->
+    <section class="section" id="soporte-remoto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Soporte Remoto</h2>
+                <p>Recibe ayuda técnica desde la comodidad de tu hogar u oficina</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+                <div>
+                    <h3 style="font-size:18px;margin-bottom:16px">¿Cómo funciona el soporte remoto?</h3>
+                    <div style="display:flex;flex-direction:column;gap:14px">
+                        <div style="display:flex;gap:14px;align-items:flex-start">
+                            <div style="width:36px;height:36px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0"><i class="fab fa-whatsapp" style="font-size:16px"></i></div>
+                            <div><div style="font-weight:500;margin-bottom:3px">1. Contáctanos por WhatsApp</div><div style="font-size:12px;color:var(--gray)">+58 412 0317421</div></div>
+                        </div>
+                        <div style="display:flex;gap:14px;align-items:flex-start">
+                            <div style="width:36px;height:36px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0"><i class="fas fa-desktop" style="font-size:16px"></i></div>
+                            <div><div style="font-weight:500;margin-bottom:3px">2. Conectamos remotamente</div><div style="font-size:12px;color:var(--gray)">Google Remote Desktop</div></div>
+                        </div>
+                        <div style="display:flex;gap:14px;align-items:flex-start">
+                            <div style="width:36px;height:36px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0"><i class="fas fa-check-circle" style="font-size:16px"></i></div>
+                            <div><div style="font-weight:500;margin-bottom:3px">3. Resolvemos tu problema</div><div style="font-size:12px;color:var(--gray)">Diagnóstico en tiempo real</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align:center">
+                    <div style="width:160px;height:160px;background:linear-gradient(135deg,var(--primary),#0d47a1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><i class="fas fa-headset" style="font-size:64px;color:white"></i></div>
+                    <button onclick="CopilotAI.selectService('soporte')" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:14px 28px;border-radius:4px;font-weight:500;font-size:14px;border:none;cursor:pointer"><i class="fab fa-whatsapp"></i> Solicitar Soporte</button>
                 </div>
             </div>
         </div>
@@ -825,9 +970,9 @@
             <div style="text-align:center;margin-top:48px;padding-top:40px">
                 <h3 style="font-size:24px;margin-bottom:16px;color:var(--dark)">¿Su infraestructura está lista para el siguiente nivel?</h3>
                 <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421?text=Ing. Angel, deseo una auditoría de mi infraestructura crítica." style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
+                    <button onclick="CopilotAI.selectService('infra')" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
                         <i class="fas fa-file-signature"></i> Solicitar Auditoría Senior
-                    </a>
+                    </button>
                     <a href="#soporte-remoto" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
                         Explorar Soporte IT
                     </a>
@@ -946,9 +1091,9 @@
                 <h3 style="font-size:24px;margin-bottom:16px">No espere a que ocurra un incidente</h3>
                 <p style="font-size:14px;color:var(--gray);margin-bottom:24px">Agende una sesión de diagnóstico inicial para evaluar su perímetro actual.</p>
                 <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421?text=Ing. Angel, requiero un blindaje contra ransomware para mi empresa." style="display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
+                    <button onclick="CopilotAI.selectService('cyber')" style="display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
                         <i class="fas fa-shield-virus"></i> Solicitar Auditoría 360°
-                    </a>
+                    </button>
                     <a href="#soporte-remoto" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
                         Ver Infraestructura
                     </a>
@@ -1057,9 +1202,9 @@
                 <h3 style="font-size:24px;margin-bottom:16px">Empiece a trabajar de forma inteligente</h3>
                 <p style="font-size:14px;color:var(--gray);margin-bottom:24px">Agende una consultoría técnica para evaluar el potencial de automatización.</p>
                 <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421?text=Ing. Angel, me interesa una consultoría en IA y Automatización." style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#673ab7,#3f51b5);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
+                    <button onclick="CopilotAI.selectService('ia')" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#673ab7,#3f51b5);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
                         <i class="fas fa-rocket"></i> Agendar Consultoría IA
-                    </a>
+                    </button>
                     <a href="#soporte-remoto" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
                         Ver Todos los Servicios
                     </a>
@@ -1198,9 +1343,9 @@
                 <h3 style="font-size:24px;margin-bottom:16px">Conecte su negocio con seguridad</h3>
                 <p style="font-size:14px;color:var(--gray);margin-bottom:24px">Solicite un estudio de cobertura WiFi o una propuesta para interconectar sus sucursales.</p>
                 <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421?text=Ing. Angel, requiero asesoría técnica para mi red corporativa y VPN." style="display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
+                    <button onclick="CopilotAI.selectService('redes')" style="display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
                         <i class="fas fa-project-diagram"></i> Consultar Proyectos de Red
-                    </a>
+                    </button>
                     <a href="#soporte-remoto" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
                         Ciberseguridad
                     </a>
@@ -1345,9 +1490,9 @@
                 <h3 style="font-size:24px;margin-bottom:16px">¿Perdió información importante?</h3>
                 <p style="font-size:14px;color:var(--gray);margin-bottom:24px">Actúe rápido. El tiempo es un factor determinante en el éxito de la recuperación.</p>
                 <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421?text=Ing. Angel, tengo una emergencia de pérdida de datos. Necesito soporte técnico." style="display:inline-flex;align-items:center;gap:8px;background:#ea4335;color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
+                    <button onclick="CopilotAI.selectService('recup')" style="display:inline-flex;align-items:center;gap:8px;background:#ea4335;color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
                         <i class="fas fa-first-aid"></i> Solicitar Rescate de Datos
-                    </a>
+                    </button>
                     <a href="#soporte-remoto" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
                         Volver al Inicio
                     </a>
@@ -1503,9 +1648,9 @@
                 <h3 style="font-size:24px;margin-bottom:16px">¿Listo para dar el salto digital?</h3>
                 <p style="font-size:14px;color:var(--gray);margin-bottom:24px">Haga que su sitio web trabaje para usted, no al revés.</p>
                 <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421?text=Ing. Angel, estoy interesado en una web inteligente con Agente de IA para mi negocio." style="display:inline-flex;align-items:center;gap:8px;background:#673ab7;color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
+                    <button onclick="CopilotAI.selectService('desarrollo')" style="display:inline-flex;align-items:center;gap:8px;background:#673ab7;color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
                         <i class="fas fa-brain"></i> Crear Mi Web Inteligente
-                    </a>
+                    </button>
                     <a href="#soporte-remoto" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
                         Ver Otros Servicios
                     </a>
@@ -1643,9 +1788,9 @@
                 <h3 style="font-size:24px;margin-bottom:16px">Transforme su infraestructura hoy</h3>
                 <p style="font-size:14px;color:var(--gray);margin-bottom:24px">Hablemos sobre cómo podemos mejorar sus procesos técnicos y reducir su presupuesto.</p>
                 <div style="display:flex;justify-content:center;gap:12px">
-                    <a href="https://wa.me/584120317421?text=Ing. Angel, necesito una Asesoría Estratégica para optimizar la tecnología de mi empresa." style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary),#004aab);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
+                    <button onclick="CopilotAI.selectService('consultoria')" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary),#004aab);color:white;padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px;border:none;cursor:pointer">
                         <i class="fas fa-calendar-alt"></i> Agendar Consultoría
-                    </a>
+                    </button>
                     <a href="#soporte-remoto" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--dark);padding:14px 28px;border-radius:24px;font-weight:600;font-size:14px">
                         Volver al Inicio
                     </a>
@@ -1673,21 +1818,21 @@
                     </div>
                     
                     <div class="contact-items">
-                        <a href="https://wa.me/584120317421" class="contact-item" style="text-decoration:none;color:inherit">
+                        <a href="#" onclick="CopilotAI.open();return false" class="contact-item" style="text-decoration:none;color:inherit;cursor:pointer">
                             <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                             <div>
                                 <h4>WhatsApp</h4>
                                 <p>+58 412 0317421</p>
                             </div>
                         </a>
-                        <div class="contact-item">
+                        <div class="contact-item" onclick="CopilotAI.open()" style="cursor:pointer">
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <h4>Email</h4>
                                 <p>nautiluz90@gmail.com</p>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item" onclick="CopilotAI.open()" style="cursor:pointer">
                             <div class="contact-icon"><i class="fas fa-phone"></i></div>
                             <div>
                                 <h4>Teléfono</h4>
@@ -1697,7 +1842,7 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form onsubmit="handleSubmit(event)">
+                    <form onsubmit="CopilotAI.open(); CopilotAI.startQualification(); handleSubmit(event); return false;">
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" id="name" required placeholder="Tu nombre">
@@ -1820,7 +1965,8 @@
     </style>
 
     <!-- Footer -->
-    <footer>
+    </main>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
@@ -1837,10 +1983,14 @@
                 <div class="footer-col">
                     <h4>Servicios</h4>
                     <ul>
-                        <li><a href="#servicios">Soporte Técnico</a></li>
-                        <li><a href="#servicios">Infraestructura</a></li>
-                        <li><a href="#servicios">Ciberseguridad</a></li>
-                        <li><a href="#servicios">Automatización IA</a></li>
+                        <li><a href="#soporte-tecnico">Soporte Técnico Integral</a></li>
+                        <li><a href="#soporte-remoto">Soporte Remoto</a></li>
+                        <li><a href="#infraestructura">Infraestructura</a></li>
+                        <li><a href="#ciberseguridad">Ciberseguridad</a></li>
+                        <li><a href="#automatizacion">Automatización IA</a></li>
+                        <li><a href="#redes">Redes</a></li>
+                        <li><a href="#recuperacion">Recuperación Datos</a></li>
+                        <li><a href="#desarrollo">Desarrollo Web</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1868,10 +2018,10 @@
     </footer>
 
     <!-- Floating -->
-    <a href="https://wa.me/584120317421" class="wa-float" target="_blank">
+    <button class="wa-float pulse-btn" onclick="CopilotAI.open()">
         <i class="fab fa-whatsapp"></i><span>¿Necesitas ayuda?</span>
-    </a>
-    <button class="ai-float" id="ai-float"><i class="fas fa-robot"></i></button>
+    </button>
+    <button class="ai-float floating" id="ai-float"><i class="fas fa-robot"></i></button>
 
     <!-- AI Modal -->
     <div class="ai-modal" id="ai-modal">
@@ -2537,10 +2687,10 @@ function choosePlan(planId) {
                 body.innerHTML += `
                     <div class="chat-msg ai"><div class="chat-avatar"><i class="fas fa-desktop"></i></div><div class="chat-bubble">¿Cuántos equipos necesitas?</div></div>
                     <div class="chat-options">
-                        <button class="chat-option" onclick="qualifyStep(3)">1-5</button>
-                        <button class="chat-option" onclick="qualifyStep(3)">6-10</button>
-                        <button class="chat-option" onclick="qualifyStep(3)">11-20</button>
-                        <button class="chat-option" onclick="qualifyStep(3)">20+</button>
+                        <button class="chat-option" onclick="qualifyStep(3, event)">1-5</button>
+                        <button class="chat-option" onclick="qualifyStep(3, event)">6-10</button>
+                        <button class="chat-option" onclick="qualifyStep(3, event)">11-20</button>
+                        <button class="chat-option" onclick="qualifyStep(3, event)">20+</button>
                     </div>
                 `;
             } else if(step === 3) {
@@ -2554,7 +2704,7 @@ function choosePlan(planId) {
                         <button class="chat-btn" onclick="qualifyStep(4)">Finalizar</button>
                     </div>
                 `;
-} else if(step === 4) {
+            } else if(step === 4) {
                 userLead.contacto = document.getElementById('leadContacto').value.trim();
                 if(!userLead.contacto) return;
                 
@@ -2570,7 +2720,6 @@ function choosePlan(planId) {
                     <div class="chat-msg ai" style="margin-top:8px"><div class="chat-avatar"><i class="fab fa-telegram"></i></div><div class="chat-bubble" style="background:#e8f5e9">Gracias por confiar en Sistemas 4A.</div></div>
                 `;
             }
-        }
         }
         
         function sendChat() {
@@ -2596,11 +2745,16 @@ function choosePlan(planId) {
             const service = document.getElementById('service').value;
             const msg = document.getElementById('message').value;
             
+            if(!name || !phone) {
+                alert('Por favor ingresa tu nombre y teléfono');
+                return;
+            }
+            
             const lead = {
                 servicio: service || 'Contacto web',
                 nombre: name,
-                empresa: email,
-                equipos: phone,
+                empresa: email || '-',
+                equipos: '1',
                 contacto: phone,
                 mensaje: msg,
                 fecha: new Date().toLocaleString('es-VE')
@@ -2608,7 +2762,172 @@ function choosePlan(planId) {
             
             sendLeadToAll(lead);
             
-            alert('¡Cotización enviada! Te contactaremos por WhatsApp para confirmar los detalles.');
+            const btn = e.target.querySelector('button[type="submit"]');
+            const origText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+            btn.style.background = '#34a853';
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('message').value = '';
+            setTimeout(() => {
+                btn.innerHTML = origText;
+                btn.style.background = '';
+            }, 3000);
+            
+            alert('¡Cotización enviada! Te contactaremos por WhatsApp: ' + phone);
+        }
+        
+        // Mostrar detalles del plan inline debajo de Planes
+        function showPlanDetails(planId) {
+            const container = document.getElementById('plan-details-container');
+            if(!container) return;
+            
+            const planData = {
+                'plan-micro': {
+                    title: 'Plan Micro IT',
+                    price: '$49/mes',
+                    color: '#1a73e8',
+                    intro: 'Solidez tecnológica para pequeñas empresas en crecimiento. Este plan está diseñado para garantizar que tu operación no se detenga.',
+                    services: [
+                        {icon: 'fa-tools', title: 'Mantenimiento', desc: 'Optimización de sistemas, limpieza de archivos'},
+                        {icon: 'fa-network-wired', title: 'Conectividad', desc: 'Redes LAN, WiFi, internet'},
+                        {icon: 'fa-shield-alt', title: 'Seguridad', desc: 'Antivirus y malware'},
+                        {icon: 'fa-print', title: 'Periféricos', desc: 'Impresoras, escáneres'},
+                        {icon: 'fa-lightbulb', title: 'Consultoría', desc: 'Asesoría en equipos/software'},
+                        {icon: 'fa-database', title: 'Respaldo', desc: 'Backup automatizado'}
+                    ],
+                    method: [
+                        {title: 'Soporte Remoto', value: 'Ilimitado'},
+                        {title: 'Soporte Sitio', value: '4 hrs/mes'},
+                        {title: 'Tiempo', value: '< 2 hrs'},
+                        {title: 'Prioridad', value: 'Alta'}
+                    ],
+                    limits: ['Máximo 5 computers', '4 hrs sitio (no acumulables)', 'Hardware adicional', 'Proyectos aparte']
+                },
+                'plan-pyme': {
+                    title: 'Plan PYME IT',
+                    price: '$89/mes',
+                    color: '#34a853',
+                    intro: 'Continuidad y seguridad para empresas en expansión. Cobertura integral hasta 10 estaciones.',
+                    services: [
+                        {icon: 'fa-laptop', title: 'Gestión Integral', desc: 'Hasta 10 equipos optimizados'},
+                        {icon: 'fa-cloud-upload-alt', title: 'Backup Doble', desc: 'Local + nube'},
+                        {icon: 'fa-network-wired', title: 'Redes', desc: 'Routers, switches'},
+                        {icon: 'fa-comments', title: 'Multi-Canal', desc: 'Teléfono + internet'},
+                        {icon: 'fa-chess-knight', title: 'Consultoría', desc: 'Estrategia tecnológica'},
+                        {icon: 'fa-sync-alt', title: 'Respaldo Híbrido', desc: 'Dual protection'}
+                    ],
+                    method: [
+                        {title: 'Soporte Remoto', value: 'Ilimitado'},
+                        {title: 'Soporte Sitio', value: '8 hrs/mes'},
+                        {title: 'Tiempo', value: '< 1 hora'},
+                        {title: 'Backup', value: 'Dual'}
+                    ],
+                    limits: ['Máximo 10 computers', '8 hrs sitio (no acumulables)', 'Licenciascloud', 'Obra civil']
+                },
+                'plan-premium': {
+                    title: 'Plan Premium IT',
+                    price: '$149/mes',
+                    color: '#7c4dff',
+                    intro: 'Alta disponibilidad y gestión tecnológica total. Para empresas que no pueden permitirse tiempos de inactividad.',
+                    services: [
+                        {icon: 'fa-chart-line', title: 'Gestión Proactiva', desc: 'Supervisión constante'},
+                        {icon: 'fa-shield-alt', title: 'Seguridad', desc: 'Firewalls, anti-ransomware'},
+                        {icon: 'fa-umbrella', title: 'Disaster Recovery', desc: 'Recuperación ante desastres'},
+                        {icon: 'fa-network-wired', title: 'Redes', desc: 'Complejas, segmentación'},
+                        {icon: 'fa-user-tie', title: 'Asesoría VIP', desc: 'Planificación estratégica'},
+                        {icon: 'fa-server', title: 'Backup 2 Capas', desc: 'Local + nube'}
+                    ],
+                    method: [
+                        {title: 'Soporte Sitio', value: '16 hrs/mes'},
+                        {title: 'Omnicanal', value: 'Ilimitado'},
+                        {title: 'Tiempo VIP', value: '< 30 min'},
+                        {title: 'Backup', value: 'Monitoreado'}
+                    ],
+                    limits: ['Máximo 20 computers', '16 hrs sitio', 'Servers CCTV', 'Desarrollo web']
+                },
+                'plan-ilimitado': {
+                    title: 'Plan Ilimitado IT',
+                    price: '$249/mes',
+                    color: '#fbbc04',
+                    intro: 'Outsourcing IT completo. Hasta 30 equipos con supervisión constante y máxima seguridad.',
+                    services: [
+                        {icon: 'fa-users-cog', title: 'Gestión 30 Equipos', desc: 'Mantenimiento integral'},
+                        {icon: 'fa-user-shield', title: 'Corporativa', desc: 'Monitoreo anti-amenazas'},
+                        {icon: 'fa-hdd', title: 'Resguardo Multi', desc: 'Backup + pruebas'},
+                        {icon: 'fa-tower-broadcast', title: 'Redes', desc: 'LAN/WiFi óptimas'},
+                        {icon: 'fa-chess-king', title: 'Consultoría', desc: 'Socio estratégico'},
+                        {icon: 'fa-infinity', title: 'Soporte 24/7', desc: 'Emergencias'}
+                    ],
+                    method: [
+                        {title: 'Sitio', value: 'Ilimitado'},
+                        {title: 'Remoto', value: 'Ilimitado 24/7'},
+                        {title: 'Respuesta', value: '< 15 min'},
+                        {title: 'Backup', value: 'Doble'}
+                    ],
+                    limits: ['Máximo 30 computers', 'Técnico residente no', 'Nube separately', 'Obra civil']
+                }
+            };
+            
+            const plan = planData[planId];
+            if(!plan) return;
+            
+            container.style.display = 'block';
+            let html = `
+                <div style="background:white;border-radius:16px;padding:32px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,0.1)">
+                    <button onclick="hidePlanDetails()" style="background:none;border:none;color:var(--gray);font-size:12px;cursor:pointer;margin-bottom:16px">
+                        <i class="fas fa-chevron-up"></i> Volver a Planes
+                    </button>
+                    <h2 style="font-size:28px;font-weight:700;color:${plan.color};margin-bottom:8px">${plan.title}</h2>
+                    <p style="color:var(--gray);margin-bottom:24px">${plan.intro}</p>
+                    
+                    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:24px">
+                        ${plan.services.map(s => `
+                            <div style="text-align:center;padding:16px;background:var(--light);border-radius:12px">
+                                <i class="fas ${s.icon}" style="font-size:20px;color:${plan.color};margin-bottom:8px"></i>
+                                <div style="font-size:12px;font-weight:600">${s.title}</div>
+                                <div style="font-size:10px;color:var(--gray)">${s.desc}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px">
+                        ${plan.method.map(m => `
+                            <div style="text-align:center;padding:16px;background:linear-gradient(135deg,${plan.color}20,${plan.color}10);border-radius:12px;border-left:3px solid ${plan.color}">
+                                <div style="font-size:11px;color:var(--gray)">${m.title}</div>
+                                <div style="font-size:18px;font-weight:700;color:${plan.color}">${m.value}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+                        <div style="padding:20px;background:var(--light);border-radius:12px">
+                            <div style="font-weight:600;margin-bottom:12px;color:#ea4335"><i class="fas fa-exclamation-triangle"></i> Límites</div>
+                            ${plan.limits.map(l => `<div style="font-size:12px;color:var(--gray);margin-bottom:4px">• ${l}</div>`).join('')}
+                        </div>
+                        <div style="padding:20px;background:linear-gradient(135deg,${plan.color},${plan.color}dd);border-radius:12px;text-align:center">
+                            <div style="font-size:32px;font-weight:700;color:var(--dark)">${plan.price}</div>
+                            <button onclick="CopilotAI.open()" class="pulse-btn" style="margin-top:12px;padding:10px 20px;background:#25D366;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600">
+                                <i class="fab fa-whatsapp"></i> Cotizar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            document.querySelectorAll('.plan-detail-section').forEach(s => s.style.display = 'none');
+        }
+        
+        function hidePlanDetails() {
+            const container = document.getElementById('plan-details-container');
+            if(container) {
+                container.style.display = 'none';
+                container.innerHTML = '';
+            }
         }
         
         // Slider

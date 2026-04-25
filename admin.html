@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Sistemas 4A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0078D4;
+            --success: #107C10;
+            --danger: #D83B01;
+            --dark: #323130;
+            --gray: #605E5C;
+            --light: #F3F2F1;
+            --white: #FFFFFF;
+            --border: #EDEBEB;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; color: var(--dark); font-size: 14px; }
+        
+        .admin-header { background: var(--primary); color: white; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .admin-header h1 { font-size: 20px; font-weight: 600; }
+        .admin-header a { color: white; text-decoration: none; font-size: 14px; margin-left: 20px; }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        
+        .tabs { display: flex; gap: 4px; margin-bottom: 24px; background: white; padding: 6px; border-radius: 8px; overflow-x: auto; flex-wrap: wrap; }
+        .tab { padding: 12px 20px; background: none; border: none; font-size: 14px; font-weight: 500; color: var(--gray); cursor: pointer; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
+        .tab:hover { background: var(--light); }
+        .tab.active { background: var(--primary); color: white; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .card h2 { font-size: 18px; margin-bottom: 8px; color: var(--dark); }
+        .card > p { color: var(--gray); margin-bottom: 20px; font-size: 13px; }
+        
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--gray); margin-bottom: 6px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; font-family: inherit; }
+        
+        .btn { padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #005A9E; }
+        .btn-success { background: var(--success); color: white; }
+        
+        .alert { padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .alert.success { background: #dff6dd; color: #0e6b0e; border: 1px solid #b8e6b9; }
+        .alert.show { display: block; }
+        
+        .stats-bar { display: flex; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+        .stat-item { background: white; padding: 16px 24px; border-radius: 8px; flex: 1; min-width: 150px; }
+        .stat-item label { font-size: 12px; color: var(--gray); }
+        .stat-item .value { font-size: 24px; font-weight: 700; color: var(--primary); }
+        
+        .item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+        .item-card { background: var(--light); padding: 16px; border-radius: 8px; }
+        .item-card h4 { font-size: 14px; margin-bottom: 10px; color: var(--dark); }
+        .item-card .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .item-card input { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 13px; }
+        
+        .lead-card { background: white; border-left: 4px solid var(--success); padding: 16px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .lead-card h4 { font-size: 15px; margin-bottom: 8px; }
+        .lead-card .meta { font-size: 12px; color: var(--gray); margin-bottom: 10px; }
+        .lead-card .details { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+        .lead-card .details span { background: var(--light); padding: 4px 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1><i class="fas fa-cog"></i> Panel Admin - Sistemas 4A</h1>
+        <a href="index.html" target="_blank"><i class="fas fa-eye"></i> Ver Web</a>
+    </div>
+    
+    <div class="container">
+        <div class="alert" id="alert">
+            <i class="fas fa-check-circle"></i> <span id="alertMsg">Cambios guardados</span>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('servicios')">Servicios</button>
+            <button class="tab" onclick="switchTab('planes')">Planes</button>
+            <button class="tab" onclick="switchTab('tasas')">Tasa BCV</button>
+            <button class="tab" onclick="switchTab('contacto')">Contacto</button>
+            <button class="tab" onclick="switchTab('leads')">Leads</button>
+        </div>
+        
+        <!-- Servicios -->
+        <div class="tab-content active" id="servicios">
+            <div class="card">
+                <h2><i class="fas fa-tags"></i> Precios de Servicios</h2>
+                <p>Precio base: $5 USD/hora. Los precios en Bs se calculan con la tasa BCV.</p>
+                <div class="item-grid" id="serviciosList"></div>
+                <button class="btn btn-primary" onclick="saveServicios()" style="margin-top: 20px;">
+                    <i class="fas fa-save"></i> Guardar Servicios
+                </button>
+                <a href="index.html" target="_blank" class="btn" style="margin-left:10px">Ver web</a>
+            </div>
+        </div>
+        
+        <!-- Planes -->
+        <div class="tab-content" id="planes">
+            <div class="card">
+                <h2><i class="fas fa-building"></i> Planes Empresariales</h2>
+                <div class="item-grid" id="planesList"></div>
+                <button class="btn btn-primary" onclick="savePlanes()" style="margin-top: 20px;">
+                    <i class="fas fa-save"></i> Guardar Planes
+                </button>
+            </div>
+        </div>
+        
+        <!-- Tasa -->
+        <div class="tab-content" id="tasas">
+            <div class="card">
+                <h2><i class="fas fa-exchange-alt"></i> Tasa BCV</h2>
+                <div class="form-group" style="max-width: 300px;">
+                    <label>Tasa (Bs por USD)</label>
+                    <input type="number" id="tasaManual" placeholder="480000">
+                </div>
+                <button class="btn btn-primary" onclick="saveTasa()">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+                <button class="btn btn-success" onclick="fetchTasa()">
+                    <i class="fas fa-sync"></i> Actualizar Automático
+                </button>
+            </div>
+        </div>
+        
+        <!-- Contacto -->
+        <div class="tab-content" id="contacto">
+            <div class="card">
+                <h2><i class="fas fa-address-book"></i> Información de Contacto</h2>
+                <div class="form-group">
+                    <label>WhatsApp (solo números)</label>
+                    <input type="text" id="whatsapp" placeholder="584120317421">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="nautiluz90@gmail.com">
+                </div>
+                <button class="btn btn-primary" onclick="saveContact()">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Leads -->
+        <div class="tab-content" id="leads">
+            <div class="card">
+                <h2><i class="fas fa-users"></i> Leads Capturados</h2>
+                <div id="leadsList"></div>
+                <button class="btn btn-primary" onclick="loadLeads()" style="margin-top: 16px;">
+                    <i class="fas fa-sync"></i> Actualizar
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let tasaBCV = 481700;
+        let config = {};
+        
+        // Datos servicios
+        const defaultServicios = [
+            { id: 1, title: 'Soporte Remoto', desc: 'Vía telefónica o Internet', horas: 1, icon: 'headset' },
+            { id: 2, title: 'Diagnóstico General', desc: 'Memory test, HDD, componentes', horas: 1, icon: 'microscope' },
+            { id: 3, title: 'Recuperación Datos', desc: 'Datos borrados', horas: 2, icon: 'database' },
+            { id: 4, title: 'Redes y WiFi', desc: 'Configuración WiFi', horas: 1, icon: 'wifi' },
+            { id: 5, title: 'Infraestructura', desc: 'Servidores, cloud', horas: 3, icon: 'server' },
+            { id: 6, title: 'Desarrollo Web', desc: 'Páginas web', horas: 0, icon: 'laptop-code' },
+            { id: 7, title: 'Consultoría IT', desc: 'Estrategia', horas: 2, icon: 'briefcase' },
+            { id: 8, title: 'Suministro Tech', desc: 'Hardware, software', horas: 0, icon: 'shopping-cart' },
+            { id: 9, title: 'Ciberseguridad', desc: 'Firewalls, antivirus', horas: 2, icon: 'shield-alt' }
+        ];
+        
+        // Datos planes
+        const defaultPlanes = [
+            { id: 'micro', title: 'Micro', subtitle: 'Hasta 5 equipos', price: 2000, hours: 4, features: ['4 hrs sitio/mes', 'Remoto ilimitado', '20% descuento'] },
+            { id: 'pyme', title: 'PYME', subtitle: 'Hasta 10 equipos', price: 5000, hours: 8, features: ['8 hrs sitio/mes', 'Remoto ilimitado', '27% descuento'] },
+            { id: 'premium', title: 'Premium', subtitle: 'Hasta 20 equipos', price: 10000, hours: 16, features: ['16 hrs sitio/mes', 'Remoto ilimitado', '33% descuento'] },
+            { id: 'ilimitado', title: 'Ilimitado', subtitle: 'Hasta 30 equipos', price: 30000, hours: 999, features: ['Horas ilimitadas', 'Remoto ilimitado', 'Máx descuento'] }
+        ];
+        
+        function loadConfig() {
+            // Cargar tasa
+            const savedTasa = localStorage.getItem('s4a_tasa');
+            if(savedTasa) tasaBCV = parseInt(savedTasa);
+            
+            // Cargar servicios
+            const savedServ = localStorage.getItem('s4a_servicios');
+            config.servicios = savedServ ? JSON.parse(savedServ) : defaultServicios;
+            
+            // Cargar planes
+            const savedPlanes = localStorage.getItem('s4a_planes');
+            config.planes = savedPlanes ? JSON.parse(savedPlanes) : defaultPlanes;
+            
+            // Cargar contacto
+            const savedContact = localStorage.getItem('s4a_config');
+            if(savedContact) config = {...config, ...JSON.parse(savedContact)};
+            
+            renderAll();
+        }
+        
+        function renderAll() {
+            document.getElementById('tasaManual').value = tasaBCV;
+            document.getElementById('whatsapp').value = config.whatsapp || '584120317421';
+            document.getElementById('email').value = config.email || 'nautiluz90@gmail.com';
+            
+            renderServicios();
+            renderPlanes();
+        }
+        
+        function renderServicios() {
+            const list = document.getElementById('serviciosList');
+            list.innerHTML = config.servicios.map((s, i) => {
+                const usd = s.horas * 5;
+                const bs = usd * tasaBCV;
+                return `
+                <div class="item-card">
+                    <h4><i class="fas fa-${s.icon}"></i> ${s.title}</h4>
+                    <div class="row">
+                        <div>
+                            <label>Horas</label>
+                            <input type="number" step="0.5" id="srv_${i}_horas" value="${s.horas}">
+                        </div>
+                        <div>
+                            <label>Precio Bs</label>
+                            <input type="text" value="${bs.toLocaleString()}" disabled style="background:#e8f4e8;color:green">
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+        
+        function renderPlanes() {
+            const list = document.getElementById('planesList');
+            list.innerHTML = config.planes.map((p, i) => `
+                <div class="item-card">
+                    <h4>${p.title} - ${p.subtitle}</h4>
+                    <div class="row">
+                        <div>
+                            <label>Precio (Bs/mes)</label>
+                            <input type="number" id="plan_${i}_price" value="${p.price}">
+                        </div>
+                        <div>
+                            <label>Horas sitio</label>
+                            <input type="number" id="plan_${i}_hours" value="${p.hours === 999 ? 'ilimitadas' : p.hours}">
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function saveServicios() {
+            config.servicios = config.servicios.map((s, i) => ({
+                ...s,
+                horas: parseFloat(document.getElementById('srv_' + i + '_horas').value) || 0
+            }));
+            localStorage.setItem('s4a_servicios', JSON.stringify(config.servicios));
+            showAlert('Servicios guardados');
+            renderServicios();
+        }
+        
+        function savePlanes() {
+            config.planes = config.planes.map((p, i) => ({
+                ...p,
+                price: parseFloat(document.getElementById('plan_' + i + '_price').value) || 0,
+                hours: document.getElementById('plan_' + i + '_hours').value === 'ilimitadas' ? 999 : parseInt(document.getElementById('plan_' + i + '_hours').value)
+            }));
+            localStorage.setItem('s4a_planes', JSON.stringify(config.planes));
+            showAlert('Planes guardados');
+        }
+        
+        function saveTasa() {
+            tasaBCV = parseInt(document.getElementById('tasaManual').value) || 480000;
+            localStorage.setItem('s4a_tasa', tasaBCV);
+            showAlert('Tasa guardada: ' + tasaBCV.toLocaleString() + ' Bs/USD');
+            renderServicios();
+        }
+        
+        async function fetchTasa() {
+            let tasa = 480000;
+            try {
+                const r = await fetch('https://api.dolarflow.com/api/oficial/');
+                if(r.ok) { const d = await r.json(); tasa = Math.round(d.price || 480000); }
+            } catch(e) {}
+            document.getElementById('tasaManual').value = tasa;
+            saveTasa();
+        }
+        
+        function saveContact() {
+            config.whatsapp = document.getElementById('whatsapp').value;
+            config.email = document.getElementById('email').value;
+            localStorage.setItem('s4a_config', JSON.stringify(config));
+            showAlert('Contacto guardado');
+        }
+        
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+            if(tabId === 'leads') loadLeads();
+        }
+        
+        function loadLeads() {
+            const leads = JSON.parse(localStorage.getItem('s4a_leads') || '[]');
+            const list = document.getElementById('leadsList');
+            if(leads.length === 0) {
+                list.innerHTML = '<p style="color:var(--gray)">No hay leads aún.</p>';
+                return;
+            }
+            list.innerHTML = leads.map(l => `
+                <div class="lead-card">
+                    <h4>${l.nombre}</h4>
+                    <div class="meta">${l.fecha}</div>
+                    <div class="details">
+                        <span><i class="fas fa-tag"></i> ${l.plan}</span>
+                        <span><i class="fas fa-building"></i> ${l.empresa || '-'}</span>
+                        <span><i class="fas fa-desktop"></i> ${l.equipos}</span>
+                        <span><i class="fas fa-phone"></i> ${l.contacto}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function showAlert(msg) {
+            document.getElementById('alertMsg').textContent = msg;
+            document.getElementById('alert').classList.add('show');
+            setTimeout(() => document.getElementById('alert').classList.remove('show'), 3000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadConfig);
+    </script>
+</body>
+</html>
