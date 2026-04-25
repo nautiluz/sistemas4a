@@ -6,7 +6,8 @@ const CopilotAI = {
         equipos: '',
         servicio: '',
         email: '',
-        telefono: ''
+        telefono: '',
+        opinion: ''
     },
     services: [
         { id: 'soporte', name: 'Soporte Tecnico', icon: 'fa-headset', section: 'soporte-remoto' },
@@ -22,6 +23,8 @@ const CopilotAI = {
         { id: 'plan-premium', name: 'Plan Premium', icon: 'fa-city', section: 'planes' },
         { id: 'plan-ilimitado', name: 'Plan Ilimitado', icon: 'fa-infinity', section: 'planes' }
     ],
+    recognition: null,
+    isListening: false,
 
     init: function() {
         this.modal = document.getElementById('ai-modal');
@@ -32,6 +35,8 @@ const CopilotAI = {
             setTimeout(function() { CopilotAI.init(); }, 300);
             return;
         }
+
+        this.initVoiceRecognition();
 
         var self = this;
         
@@ -50,6 +55,63 @@ const CopilotAI = {
         this.input.onkeypress = function(e) {
             if (e.key === 'Enter') self.handleInput();
         };
+    },
+
+    initVoiceRecognition: function() {
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            this.recognition = new SpeechRecognition();
+            this.recognition.lang = 'es-VE';
+            this.recognition.continuous = false;
+            this.recognition.interimResults = true;
+
+            var self = this;
+            this.recognition.onresult = function(event) {
+                var transcript = '';
+                for (var i = event.resultIndex; i < event.results.length; i++) {
+                    if (event.results[i].isFinal) {
+                        transcript += event.results[i][0].transcript;
+                    }
+                }
+                if (transcript) {
+                    self.input.value = transcript;
+                    self.updateVoiceButton(false);
+                }
+            };
+
+            this.recognition.onerror = function(event) {
+                self.updateVoiceButton(false);
+                console.log('Voice error:', event.error);
+            };
+
+            this.recognition.onend = function() {
+                self.updateVoiceButton(false);
+            };
+        }
+    },
+
+    toggleVoice: function() {
+        if (!this.recognition) {
+            this.addMessage('ai', 'Tu navegador no soporta reconocimiento de voz. Puedes escribir tu mensaje.');
+            return;
+        }
+
+        if (this.isListening) {
+            this.recognition.stop();
+        } else {
+            this.input.focus();
+            this.recognition.start();
+            this.updateVoiceButton(true);
+        }
+    },
+
+    updateVoiceButton: function(listening) {
+        this.isListening = listening;
+        var btn = document.getElementById('voice-btn');
+        if (btn) {
+            btn.innerHTML = listening ? '<i class="fas fa-stop"></i>' : '<i class="fas fa-microphone"></i>';
+            btn.style.background = listening ? '#ea4335' : '#fbbc04';
+        }
     },
 
     open: function() {
@@ -133,35 +195,40 @@ const CopilotAI = {
 
         if (this.state === 'nombre') {
             this.data.nombre = value;
+            this.state = 'telefono';
+            this.addMessage('ai', 'Gracias ' + value + '!\n\nCual es tu numero de telefono?');
+        } else if (this.state === 'telefono') {
+            this.data.telefono = value;
+            this.state = 'email';
+            this.addMessage('ai', 'Cual es tu correo electronico?');
+        } else if (this.state === 'email') {
+            this.data.email = value;
             this.state = 'empresa';
-            this.addMessage('ai', 'Gracias ' + value + '!\n\nPara que empresa trabajas? (o "personal")');
+            this.addMessage('ai', 'Para que empresa trabajas? (o "personal")');
         } else if (this.state === 'empresa') {
             this.data.empresa = value.toLowerCase() === 'personal' ? 'Particular' : value;
             this.state = 'equipos';
             this.addMessage('ai', 'Cuantos equipos necesitan soporte?');
         } else if (this.state === 'equipos') {
             this.data.equipos = value;
-            this.state = 'email';
-            this.addMessage('ai', 'Cual es tu correo electronico?');
-        } else if (this.state === 'email') {
-            this.data.email = value;
-            this.state = 'telefono';
-            this.addMessage('ai', 'Tu numero de telefono?');
-        } else if (this.state === 'telefono') {
-            this.data.telefono = value;
+            this.state = 'opinion';
+            this.addMessage('ai', 'Perfecto!\n\nAhora describe el problema o opinion que necesitas solucionar:\n\n(Puedes usar el microfono para dictar)');
+        } else if (this.state === 'opinion') {
+            this.data.opinion = value;
             this.state = 'confirmar';
             this.showConfirmation();
         }
     },
 
     showConfirmation: function() {
-        var summary = 'RESUMEN\n\n' +
+        var summary = 'RESUMEN DE SOLICITUD\n\n' +
             'Nombre: ' + this.data.nombre + '\n' +
+            'Telefono: ' + this.data.telefono + '\n' +
+            'Email: ' + this.data.email + '\n' +
             'Empresa: ' + this.data.empresa + '\n' +
             'Equipos: ' + this.data.equipos + '\n' +
-            'Servicio: ' + this.data.servicio + '\n' +
-            'Email: ' + this.data.email + '\n' +
-            'Telefono: ' + this.data.telefono;
+            'Servicio: ' + this.data.servicio + '\n\n' +
+            'PROBLEMA/OPINION:\n' + this.data.opinion;
         
         this.addMessage('ai', summary + '\n\nSon correctos los datos?');
         
@@ -169,7 +236,7 @@ const CopilotAI = {
         setTimeout(function() {
             self.addMessage('ai', 'Confirma para enviar:', 
                 '<div class="chat-options">' +
-                '<div class="chat-option" onclick="CopilotAI.sendToAllChannels()" style="background:#34a853;color:white;border-color:#34a853">Si, enviar</div>' +
+                '<div class="chat-option" onclick="CopilotAI.sendToAllChannels()" style="background:#34a853;color:white;border-color:#34a853">Si, enviar solicitud</div>' +
                 '<div class="chat-option" onclick="CopilotAI.startConversation()">Empezar de nuevo</div>' +
                 '</div>'
             );
@@ -178,15 +245,17 @@ const CopilotAI = {
 
     formatLeadMessage: function() {
         return 'NUEVO LEAD - SISTEMAS 4A\n' +
-            '------------------------\n' +
+            '========================\n' +
             'Nombre: ' + this.data.nombre + '\n' +
+            'Telefono: ' + this.data.telefono + '\n' +
+            'Email: ' + this.data.email + '\n' +
             'Empresa: ' + this.data.empresa + '\n' +
             'Equipos: ' + this.data.equipos + '\n' +
-            'Email: ' + this.data.email + '\n' +
-            'Telefono: ' + this.data.telefono + '\n' +
-            '------------------------\n' +
+            '========================\n' +
             'SERVICIO: ' + this.data.servicio + '\n' +
-            '------------------------\n' +
+            '========================\n' +
+            'PROBLEMA/OPINION:\n' + this.data.opinion + '\n' +
+            '========================\n' +
             'Fecha: ' + new Date().toLocaleString();
     },
 
@@ -199,19 +268,18 @@ const CopilotAI = {
         try {
             localStorage.setItem('lead_' + Date.now(), JSON.stringify({
                 nombre: this.data.nombre,
+                telefono: this.data.telefono,
+                email: this.data.email,
                 empresa: this.data.empresa,
                 equipos: this.data.equipos,
                 servicio: this.data.servicio,
-                email: this.data.email,
-                telefono: this.data.telefono,
+                opinion: this.data.opinion,
                 fecha: new Date().toISOString()
             }));
         } catch(e) {}
         
         this.sendToTelegram(leadText);
-        
         this.sendEmail(leadText);
-        
         this.openWhatsApp(leadText);
     },
 
@@ -237,7 +305,8 @@ const CopilotAI = {
                 equipos: this.data.equipos,
                 servicio: this.data.servicio,
                 email: this.data.email,
-                telefono: this.data.telefono
+                telefono: this.data.telefono,
+                opinion: this.data.opinion
             }).then(function() {
                 self.addMessage('ai', 'Email enviado correctamente!');
             }).catch(function(err) {
@@ -258,9 +327,9 @@ const CopilotAI = {
         var phone = '584120317421';
         var text = encodeURIComponent(message);
         
-        this.addMessage('ai', 'Todo enviado!',
-            '<a href="https://wa.me/' + phone + '?text=' + text + '" target="_blank" class="chat-btn" style="background:#25D366;text-align:center;display:block;margin-top:8px">' +
-            '<i class="fab fa-whatsapp"></i> Abrir WhatsApp' +
+        this.addMessage('ai', 'Solicitud enviada exitosamente!',
+            '<a href="https://wa.me/' + phone + '?text=' + text + '" target="_blank" class="chat-btn" style="background:#25D366;text-align:center;display:block;margin-top:8px;padding:12px;border-radius:8px;color:white;text-decoration:none">' +
+            '<i class="fab fa-whatsapp"></i> Continuar por WhatsApp' +
             '</a>' +
             '<div class="chat-option" onclick="CopilotAI.startConversation()" style="margin-top:12px;display:inline-block">Nueva consulta</div>'
         );
