@@ -611,83 +611,74 @@
                 </div>
             </div>
         </div>
-    </section>
-
+</section>
+ 
     
-    <!-- Planes -->
-    <section class="section" id="planes" style="background: var(--primary-light);">
+    <!-- Servicios -->
+    <section class="section section-gray" id="servicios">
         <div class="container">
             <div class="section-header">
-                <h2>Planes para Empresas</h2>
-                <p>Elige el plan ideal para tu negocio</p>
+                <h2>Nuestros Servicios</h2>
+                <p>Soluciones integrales para tu empresa</p>
             </div>
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <div class="plan-icon">🖥️</div>
-                    <h3>Micro</h3>
-                    <p class="plan-subtitle">Hasta 5 computadoras</p>
-                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$49.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: 4 horas/mes</li>
-                        <li><i class="fas fa-check"></i>✓ Soporte Remoto vía Internet ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Respaldo de Datos (Backup) local</li>
-                        <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
-                        <li><i class="fas fa-check"></i>✓ Descuento 8% en horas adicionales</li>
-                        <li><i class="fas fa-check"></i>✓ Prioridad con tiempo garantizado</li>
-                    </ul>
-                    <button class="service-btn" onclick="showPlanDetails('plan-micro')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon floating" style="animation-delay:0s"><i class="fas fa-headset"></i></div>
+                    <h3>Soporte Técnico</h3>
+                    <p>Resolución de incidencias y mantenimiento preventivo. Incluye Outsourcing IT Integral, gestión del puesto de trabajo y protocolos de Continuidad Operativa.</p>
+                    <div class="service-features"><span>24/7</span><span>Remoto</span><span>Sitio</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('soporte')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
-                <div class="plan-card popular">
-                    <div class="plan-icon">🏢</div>
-                    <h3>PYME</h3>
-                    <p class="plan-subtitle">Hasta 10 computadoras</p>
-                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$89.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: 8 horas/mes</li>
-                        <li><i class="fas fa-check"></i>✓ Soporte Remoto telefónico ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Soporte Remoto vía Internet ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Respaldo de Datos local y en nube</li>
-                        <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
-                        <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
-                    </ul>
-                    <button class="service-btn" onclick="showPlanDetails('plan-pyme')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                <div class="service-card">
+                    <div class="service-icon floating" style="animation-delay:0.3s"><i class="fas fa-server"></i></div>
+                    <h3>Infraestructura Crítica</h3>
+                    <p>Diseño de Data Centers y Networking avanzados con Alta Disponibilidad. Infrastructuras escalables.</p>
+                    <div class="service-features"><span>Alta Disponibilidad</span><span>Azure</span><span>VMware</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('infra')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
-                <div class="plan-card">
-                    <div class="plan-icon">🏭</div>
-                    <h3>Premium</h3>
-                    <p class="plan-subtitle">Hasta 20 computadoras</p>
-                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$149.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: 16 horas/mes</li>
-                        <li><i class="fas fa-check"></i>✓ Soporte Remoto telefónico ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Soporte Remoto vía Internet ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Respaldo de Datos local y en nube</li>
-                        <li><i class="fas fa-check"></i>✓ Consulta a Técnico Experto ilimitada</li>
-                        <li><i class="fas fa-check"></i>✓ Tiempo de respuesta garantizado</li>
-                    </ul>
-                    <button class="service-btn" onclick="showPlanDetails('plan-premium')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                <div class="service-card">
+                    <div class="service-icon floating" style="animation-delay:0.6s"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Ciberseguridad 360°</h3>
+                    <p>Blindaje contra Ransomware. Auditorías ISO 27001 y Monitoreo SOC 24/7.</p>
+                    <div class="service-features"><span>ISO 27001</span><span>SOC 24/7</span><span>Anti-Ransomware</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('cyber')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
-                <div class="plan-card">
-                    <div class="plan-icon">🚀</div>
-                    <h3>Ilimitado</h3>
-                    <p class="plan-subtitle">Más de 20 computadoras</p>
-                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$249.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i>✓ Soporte Técnico en Sitio: Ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Soporte Remoto telefónico ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Soporte Remoto vía Internet ilimitado</li>
-                        <li><i class="fas fa-check"></i>✓ Respaldo de Datos local y en nube</li>
-                        <li><i class="fas fa-check"></i>✓ Gestor de Cuenta Dedicated</li>
-                        <li><i class="fas fa-check"></i>✓ SLA con garantías scritpas</li>
-                    </ul>
-                    <button class="service-btn" onclick="showPlanDetails('plan-ilimitado')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                <div class="service-card">
+                    <div class="service-icon floating" style="animation-delay:0.9s"><i class="fas fa-brain"></i></div>
+                    <h3>Automatización IA</h3>
+                    <p>Agentes Inteligentes y RPA. Robots que ejecutan tareas repetitivas y consultoría técnica IA.</p>
+                    <div class="service-features"><span>Agentes IA</span><span>RPA</span><span>Consultoría</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('ia')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
-            </div>
-            
-            <!-- Plan Details Inline - Below Planes -->
-<div id="plan-details-container" style="display:none;margin-top:24px">
-                <!-- Content injected via JavaScript -->
-            </div>
+                <div class="service-card">
+                    <div class="service-icon floating" style="animation-delay:1.2s"><i class="fas fa-wifi"></i></div>
+                    <h3>Redes & Conectividad</h3>
+                    <p>Diseño e instalación de redes corporativas, VPN sitio a sitio, WiFi empresarial y conectividad segura.</p>
+                    <div class="service-features"><span>UTP</span><span>WiFi</span><span>OpenVPN</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('redes')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon floating" style="animation-delay:1.5s"><i class="fas fa-database"></i></div>
+                    <h3>Recuperación de Datos</h3>
+                    <p>Recuperar datos borrados, por infección de virus o fallas del sistema operativo.</p>
+                    <div class="service-features"><span>Datos</span><span>Infección</span><span>Emergencias</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('recup')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Desarrollo Web & Sistemas</h3>
+                    <p>Páginas web profesionales, sistemas a medida y posicionamiento SEO.</p>
+                    <div class="service-features"><span>SEO</span><span>E-commerce</span><span>Sistemas</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('desarrollo')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Asesoría Estratégica</h3>
+                    <p>Consultoría tecnológica para planificar, optimizar costos y seleccionar proveedores.</p>
+                    <div class="service-features"><span>Strategy</span><span>Auditoría</span><span>Roadmap</span></div>
+                    <button class="service-btn" onclick="CopilotAI.selectService('consultoria')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+</div>
         </div>
     </section>
 
@@ -767,74 +758,6 @@
                     <i class="fas fa-rocket"></i> Optimización operativa + Desarrollo de talento
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Servicios -->
-    <section class="section section-gray" id="servicios">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nuestros Servicios</h2>
-                <p>Soluciones integrales para tu empresa</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon floating" style="animation-delay:0s"><i class="fas fa-headset"></i></div>
-                    <h3>Soporte Técnico</h3>
-                    <p>Resolución de incidencias y mantenimiento preventivo. Incluye Outsourcing IT Integral, gestión del puesto de trabajo y protocolos de Continuidad Operativa.</p>
-                    <div class="service-features"><span>24/7</span><span>Remoto</span><span>Sitio</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('soporte')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon floating" style="animation-delay:0.3s"><i class="fas fa-server"></i></div>
-                    <h3>Infraestructura Crítica</h3>
-                    <p>Diseño de Data Centers y Networking avanzados con Alta Disponibilidad. Infrastructuras escalables.</p>
-                    <div class="service-features"><span>Alta Disponibilidad</span><span>Azure</span><span>VMware</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('infra')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon floating" style="animation-delay:0.6s"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Ciberseguridad 360°</h3>
-                    <p>Blindaje contra Ransomware. Auditorías ISO 27001 y Monitoreo SOC 24/7.</p>
-                    <div class="service-features"><span>ISO 27001</span><span>SOC 24/7</span><span>Anti-Ransomware</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('cyber')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon floating" style="animation-delay:0.9s"><i class="fas fa-brain"></i></div>
-                    <h3>Automatización IA</h3>
-                    <p>Agentes Inteligentes y RPA. Robots que ejecutan tareas repetitivas y consultoría técnica IA.</p>
-                    <div class="service-features"><span>Agentes IA</span><span>RPA</span><span>Consultoría</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('ia')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon floating" style="animation-delay:1.2s"><i class="fas fa-wifi"></i></div>
-                    <h3>Redes & Conectividad</h3>
-                    <p>Diseño e instalación de redes corporativas, VPN sitio a sitio, WiFi empresarial y conectividad segura.</p>
-                    <div class="service-features"><span>UTP</span><span>WiFi</span><span>OpenVPN</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('redes')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon floating" style="animation-delay:1.5s"><i class="fas fa-database"></i></div>
-                    <h3>Recuperación de Datos</h3>
-                    <p>Recuperar datos borrados, por infección de virus o fallas del sistema operativo.</p>
-                    <div class="service-features"><span>Datos</span><span>Infección</span><span>Emergencias</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('recup')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Desarrollo Web & Sistemas</h3>
-                    <p>Páginas web profesionales, sistemas a medida y posicionamiento SEO.</p>
-                    <div class="service-features"><span>SEO</span><span>E-commerce</span><span>Sistemas</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('desarrollo')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Asesoría Estratégica</h3>
-                    <p>Consultoría tecnológica para planificar, optimizar costos y seleccionar proveedores.</p>
-                    <div class="service-features"><span>Strategy</span><span>Auditoría</span><span>Roadmap</span></div>
-                    <button class="service-btn" onclick="CopilotAI.selectService('consultoria')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
-                </div>
-</div>
         </div>
     </section>
 
@@ -943,6 +866,78 @@
                 <div style="text-align:center">
                     <div style="width:160px;height:160px;background:linear-gradient(135deg,var(--primary),#0d47a1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><i class="fas fa-headset" style="font-size:64px;color:white"></i></div>
                     <button onclick="CopilotAI.selectService('soporte')" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:14px 28px;border-radius:4px;font-weight:500;font-size:14px;border:none;cursor:pointer"><i class="fab fa-whatsapp"></i> Solicitar Soporte</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planes -->
+    <section class="section" id="planes" style="background: var(--primary-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planes para Empresas</h2>
+                <p>Elige el plan ideal para tu negocio</p>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-icon">🖥️</div>
+                    <h3>Micro</h3>
+                    <p class="plan-subtitle">Hasta 5 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$49.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Soporte Técnico en Sitio: 4 horas/mes</li>
+                        <li><i class="fas fa-check"></i> Soporte Remoto vía Internet ilimitado</li>
+                        <li><i class="fas fa-check"></i> Respaldo de Datos (Backup) local</li>
+                        <li><i class="fas fa-check"></i> Consulta a Técnico Experto ilimitada</li>
+                        <li><i class="fas fa-check"></i> Descuento 8% en horas adicionales</li>
+                        <li><i class="fas fa-check"></i> Prioridad con tiempo garantizado</li>
+                    </ul>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-micro')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+                <div class="plan-card popular">
+                    <div class="plan-icon">🏢</div>
+                    <h3>PYME</h3>
+                    <p class="plan-subtitle">Hasta 10 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$89.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Soporte Técnico en Sitio: 8 horas/mes</li>
+                        <li><i class="fas fa-check"></i> Soporte Remoto telefónico ilimitado</li>
+                        <li><i class="fas fa-check"></i> Soporte Remoto vía Internet ilimitado</li>
+                        <li><i class="fas fa-check"></i> Respaldo de Datos local y en nube</li>
+                        <li><i class="fas fa-check"></i> Consulta a Técnico Experto ilimitada</li>
+                        <li><i class="fas fa-check"></i> Tiempo de respuesta garantizado</li>
+                    </ul>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-pyme')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-icon">🏭</div>
+                    <h3>Premium</h3>
+                    <p class="plan-subtitle">Hasta 20 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$149.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Soporte Técnico en Sitio: 16 horas/mes</li>
+                        <li><i class="fas fa-check"></i> Soporte Remoto telefónico ilimitado</li>
+                        <li><i class="fas fa-check"></i> Soporte Remoto vía Internet ilimitado</li>
+                        <li><i class="fas fa-check"></i> Respaldo de Datos local y en nube</li>
+                        <li><i class="fas fa-check"></i> Consulta a Técnico Experto ilimitada</li>
+                        <li><i class="fas fa-check"></i> Tiempo de respuesta garantizado</li>
+                    </ul>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-premium')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-icon">🚀</div>
+                    <h3>Ilimitado</h3>
+                    <p class="plan-subtitle">Más de 20 computadoras</p>
+                    <div class="plan-price" style="font-size:28px;font-weight:700;color:var(--primary)">$249.99<span style="font-size:14px;color:var(--gray);font-weight:400">/mes</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Soporte Técnico en Sitio: Ilimitado</li>
+                        <li><i class="fas fa-check"></i> Soporte Remoto telefónico ilimitado</li>
+                        <li><i class="fas fa-check"></i> Soporte Remoto vía Internet ilimitado</li>
+                        <li><i class="fas fa-check"></i> Respaldo de Datos local y en nube</li>
+                        <li><i class="fas fa-check"></i> Gestor de Cuenta Dedicated</li>
+                        <li><i class="fas fa-check"></i> SLA con garantías escritas</li>
+                    </ul>
+                    <button class="service-btn" onclick="CopilotAI.selectService('plan-ilimitado')"><i class="fas fa-info-circle"></i> Ver Detalles</button>
                 </div>
             </div>
         </div>
